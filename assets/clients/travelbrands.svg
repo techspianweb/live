@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="TravelBrands">
+  <g fill="#5A5A60">
+    <g transform="translate(0 20)">
+      <path d="M0 0 L8 -4 L8 4 z M0 0 L8 4 L8 -4 z M0 0 L-8 -4 L-8 4 z M0 0 L-8 4 L-8 -4 z" transform="rotate(0)" fill="#5A5A60"/>
+      <path d="M0 0 L8 -4 L8 4 z M0 0 L8 4 L8 -4 z M0 0 L-8 -4 L-8 4 z M0 0 L-8 4 L-8 -4 z" transform="rotate(45)" fill="#5A5A60"/>
+    </g>
+    <text x="22" y="26" font-family="'Söhne','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="-0.015em">Travel<tspan font-weight="400">Brands</tspan></text>
+  </g>
+</svg>

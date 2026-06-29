@@ -1,0 +1,125 @@
+services:
+  - type: web
+    name: techspian
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+    routes:
+      # --- 301 redirects: old techspian.com WordPress URLs -> new site ---
+      - type: redirect
+        source: /about-us
+        destination: /about.html
+      - type: redirect
+        source: /about-us/*
+        destination: /about.html
+      - type: redirect
+        source: /services
+        destination: /capabilities.html
+      - type: redirect
+        source: /services/*
+        destination: /capabilities.html
+      - type: redirect
+        source: /what-we-do
+        destination: /capabilities.html
+      - type: redirect
+        source: /what-we-do/ai-and-ml
+        destination: /capabilities.html#ai
+      - type: redirect
+        source: /what-we-do/cloud-engineering-services
+        destination: /capabilities.html#cloud
+      - type: redirect
+        source: /what-we-do/platform-engineering-services
+        destination: /capabilities.html#platform
+      - type: redirect
+        source: /what-we-do/mobile-app-development
+        destination: /capabilities.html#mobile
+      - type: redirect
+        source: /what-we-do/*
+        destination: /capabilities.html
+      - type: redirect
+        source: /mobile-app-development
+        destination: /capabilities.html#mobile
+      - type: redirect
+        source: /contact-us
+        destination: /contact.html
+      - type: redirect
+        source: /contact-us/*
+        destination: /contact.html
+      - type: redirect
+        source: /techspian-careers
+        destination: /about.html#careers
+      - type: redirect
+        source: /techspian-careers/*
+        destination: /about.html#careers
+      - type: redirect
+        source: /techspian-case-studies
+        destination: /work.html
+      - type: redirect
+        source: /techspian-case-studies/*
+        destination: /work.html
+      - type: redirect
+        source: /case-studies
+        destination: /work.html
+      - type: redirect
+        source: /case-studies/*
+        destination: /work.html
+      - type: redirect
+        source: /blogs
+        destination: /
+      - type: redirect
+        source: /blogs/*
+        destination: /
+      - type: redirect
+        source: /blog
+        destination: /
+      - type: redirect
+        source: /blog/*
+        destination: /
+      - type: redirect
+        source: /rfp
+        destination: /contact.html
+      - type: redirect
+        source: /rfp/*
+        destination: /contact.html
+      - type: redirect
+        source: /press-and-media
+        destination: /about.html
+      - type: redirect
+        source: /press-and-media/*
+        destination: /about.html
+      # --- Clean-URL rewrites on the new site ---
+      - type: rewrite
+        source: /about
+        destination: /about.html
+      - type: rewrite
+        source: /approach
+        destination: /approach.html
+      - type: rewrite
+        source: /capabilities
+        destination: /capabilities.html
+      - type: rewrite
+        source: /contact
+        destination: /contact.html
+      - type: rewrite
+        source: /industries
+        destination: /industries.html
+      - type: rewrite
+        source: /work
+        destination: /work.html

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="Privilege Rooms">
+  <g fill="#5A5A60">
+    <path d="M4 32 V8 h7 q5 0 5 5 q0 5 -5 5 H8 V32 z" fill="#5A5A60"/>
+    <path d="M21 32 V8 h7 q5 0 5 5 q0 4 -4 5 l5 14 h-4 l-5 -13 H25 V32 z" fill="#5A5A60"/>
+    <text x="44" y="20" font-family="'Söhne','Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="800" letter-spacing="0.02em">PRIVILEGE</text>
+    <text x="44" y="33" font-family="'Söhne','Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="500" letter-spacing="0.16em">ROOMS</text>
+  </g>
+</svg>

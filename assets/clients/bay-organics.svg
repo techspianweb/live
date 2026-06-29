@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="Bay Organics">
+  <g fill="#5A5A60">
+    <circle cx="16" cy="20" r="11" fill="none" stroke="#5A5A60" stroke-width="2.2"/>
+    <path d="M11 20 q5 -7 10 0 q-5 7 -10 0z"/>
+    <text x="36" y="26" font-family="'Söhne','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="-0.02em">Bay Organics</text>
+  </g>
+</svg>

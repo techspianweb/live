@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; object-src 'none';">
+<title>Contact | Techspian</title>
+<meta name="description" content="Bring us the problem you are trying to solve. We will tell you what we would do, and then we will build and run it with you.">
+<meta property="og:title" content="Contact | Techspian">
+<meta property="og:description" content="Bring us the problem you are trying to solve. We will tell you what we would do, and then we will build it.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=1782736882">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png?v=1782736882">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css?v=1782736882">
+<link rel="stylesheet" href="style.css?v=1782736882">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand" aria-label="Techspian home">
+        <img src="assets/techspian-logo-nav.svg?v=1782736882" alt="Techspian">
+      </a>
+            <ul class="nav-links" role="list">
+        <li><a href="capabilities.html">What We Do</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="work.html">Our Work</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Strategy call</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero hero--page">
+  <div class="wrap hero-inner reveal">
+    <span class="eyebrow">Contact</span>
+    <h1 class="h-hero">Bring us the problem you are trying to solve.</h1>
+    <p class="hero-lead">We will tell you what we would do, and then we will build and run it with you. No long discovery before we say anything useful, you will leave the first call with a point of view.</p>
+    <div class="btn-group">
+      <a href="#contact-form" class="btn btn--primary">Send us a message</a>
+      <a href="work.html" class="btn btn--ghost">See our work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORM + ASIDE ============ -->
+<section class="section" id="contact-form">
+  <div class="wrap">
+    <div class="grid grid-2 reveal" style="gap:var(--space-16);align-items:start">
+
+      <!-- Aside -->
+      <div>
+        <h2 class="h-sub" style="margin-bottom:var(--space-6)">Talk to the team that does the work.</h2>
+        <p style="color:var(--color-charcoal);margin-bottom:var(--space-8)">Your first conversation is with the people who would actually advise, build, and operate the system, not a sales layer that hands you off later.</p>
+        <div class="acc">
+          <div class="acc-item">
+            <h3>Email</h3>
+            <p><a href="mailto:marketing@techspian.com">marketing@techspian.com</a></p>
+          </div>
+          <div class="acc-item">
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/company/techspian" target="_blank" rel="noopener noreferrer">linkedin.com/company/techspian</a></p>
+          </div>
+          <div class="acc-item">
+            <h3>Studio</h3>
+            <p>Pune, India</p>
+          </div>
+          <div class="acc-item">
+            <h3>Established</h3>
+            <p>Incorporated 2020 · ISO 27001</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form card -->
+      <div class="form-card">
+        <form novalidate>
+          <div class="form-row cols-2" style="margin-bottom:var(--space-5)">
+            <div>
+              <label class="form-label" for="name">Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label class="form-label" for="company">Company</label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Your company">
+            </div>
+          </div>
+          <div class="form-row cols-2" style="margin-bottom:var(--space-5)">
+            <div>
+              <label class="form-label" for="email">Work email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div>
+              <label class="form-label" for="topic">What is this about</label>
+              <select class="form-select" id="topic" name="topic">
+                <option value="Strategy and advisory">Strategy and advisory</option>
+                <option value="AI-native engineering">AI-native engineering</option>
+                <option value="Managed operations">Managed operations</option>
+                <option value="Platform and accelerators">Platform and accelerators</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom:var(--space-6)">
+            <div>
+              <label class="form-label" for="message">What are you trying to solve</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about the problem, the system, or the outcome you are after." required></textarea>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap">
+            <button type="submit" class="btn btn--primary">Send the message</button>
+            <span style="font-size:var(--text-xs);color:var(--color-charcoal)">We reply within one business day.</span>
+          </div>
+          <p role="status" aria-live="polite" style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-charcoal)"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NOW (dark) ============ -->
+<section class="section section--ink">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Now</span>
+      <h2 class="h-section">The travel businesses that win<br>are rebuilding for agents.</h2>
+      <p class="lead" style="color:#cfcfd3;max-width:58ch;margin-top:var(--space-5)">AI is moving from a feature to the operating layer of distribution, pricing, and service. The advantage goes to teams that architect for it early, with a partner accountable for the result in production, not just the recommendation.</p>
+    </div>
+    <div class="grid grid-3 reveal-stagger">
+      <article class="tile">
+        <span class="tile-num">Distribution</span>
+        <div class="accent-rule"></div>
+        <h3>Agentic commerce is a real channel now.</h3>
+        <p>AI agents are booking travel. The systems that are not designed for them will lose inventory, margin, and customers to those that are.</p>
+      </article>
+      <article class="tile">
+        <span class="tile-num">Architecture</span>
+        <div class="accent-rule"></div>
+        <h3>NDC and Offer-and-Order are live.</h3>
+        <p>The EDIFACT era is closing. Dual-stack migrations and Offer-and-Order readiness are the decisions that will determine distribution economics for the next decade.</p>
+      </article>
+      <article class="tile">
+        <span class="tile-num">Loyalty</span>
+        <div class="accent-rule"></div>
+        <h3>Loyalty is a balance-sheet question.</h3>
+        <p>Real-time earn and burn, breakage optimization, and dynamic award pricing require an event-driven core that most legacy platforms cannot support.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section cta-band">
+  <div class="wrap cta-inner reveal">
+      <span class="cta-rule" aria-hidden="true"></span>
+      <h2 class="h-display">One conversation. A clear point of view.</h2>
+      <div class="btn-group">
+      <a href="#contact-form" class="btn btn--primary">Send us a message</a>
+      <a href="capabilities.html" class="btn btn--ghost">See what we do</a>
+    </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/techspian-logo-footer.svg?v=1782736882" alt="Techspian">
+        <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
+        <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul role="list">
+          <li><a href="capabilities.html">What We Do</a></li>
+          <li><a href="industries.html">Travel Verticals</a></li>
+          <li><a href="approach.html">How We Work</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul role="list">
+          <li><a href="work.html">Our Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul role="list">
+          <li><a href="contact.html">Book a strategy call</a></li>
+          <li><a href="https://www.linkedin.com/company/techspian" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:marketing@techspian.com">marketing@techspian.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-marquee" aria-hidden="true">
+    <div class="marquee-track"><span>Boardroom to live release</span><span class="dot">·</span><span>Same team end to end</span><span class="dot">·</span><span>Every season</span><span class="dot">·</span><span>In production</span><span class="dot">·</span></div>
+  </div>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Techspian. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js?v=1782736882"></script>
+</body>
+</html>
