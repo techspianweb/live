@@ -23,8 +23,9 @@ bust_file() {
   sed -i -E "s#url\(([^)'\"?]+\.${EXTS})\)#url(\1?v=${NEW_V})#g" "$f"
 }
 
-# HTML pages
-for f in *.html; do
+# HTML pages (root + all subfolders one and two levels deep)
+for f in *.html */index.html */*/index.html; do
+  [ -f "$f" ] || continue
   bust_file "$f"
 done
 

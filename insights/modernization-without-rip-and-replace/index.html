@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; object-src 'none';">
+<title>Modernisation without the rip and replace. | Techspian Insights</title>
+<meta name="description" content="The travel industry's mainframes did not go away. They got wrapped, throttled, and joined by newer systems that never quite replaced them. Here is how to move forward without starting a two-year war.">
+<meta property="og:title" content="Modernisation without the rip and replace. | Techspian Insights">
+<meta property="og:description" content="The travel industry's mainframes did not go away. They got wrapped, throttled, and joined by newer systems that never quite replaced them. Here is how to move forward without starting a two-year war.">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783517595">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783517595">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../base.css?v=1783517595">
+<link rel="stylesheet" href="../../style.css?v=1783517595">
+<link rel="stylesheet" href="../../insights.css?v=1783517595">
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../" class="brand" aria-label="Techspian home">
+        <img src="../../assets/techspian-logo-nav.svg?v=1783517595" alt="Techspian">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../../capabilities">What We Do</a></li>
+        <li><a href="../../industries">Industries</a></li>
+        <li><a href="../../work">Our Work</a></li>
+        <li><a href="../../approach">Approach</a></li>
+        <li><a href="../../about">About</a></li>
+        <li><a href="../../insights" class="is-active">Insights</a></li>
+      </ul>
+      <a href="../../contact" class="nav-cta">Strategy call</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<article class="post">
+
+  <div class="post-hero" aria-hidden="true">
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C4E54"/>
+      <stop offset="1" stop-color="#01696F"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="320" fill="url(#g4)"/>
+  <g fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-dasharray="6 6">
+    <rect x="280" y="90" width="240" height="140" rx="4"/>
+  </g>
+  <g fill="rgba(255,255,255,0.14)">
+    <rect x="300" y="110" width="60" height="14"/>
+    <rect x="300" y="132" width="80" height="14"/>
+    <rect x="300" y="154" width="60" height="14"/>
+    <rect x="300" y="176" width="90" height="14"/>
+    <rect x="300" y="198" width="50" height="14"/>
+  </g>
+  <g fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5">
+    <path d="M120 160 L280 160"/>
+    <path d="M520 160 L680 160"/>
+    <circle cx="120" cy="160" r="18"/>
+    <circle cx="680" cy="160" r="18"/>
+  </g>
+  <g fill="#fff" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" text-anchor="middle" opacity="0.9">
+    <text x="400" y="72">LEGACY, CONTAINED</text>
+    <text x="120" y="196">NEW</text>
+    <text x="680" y="196">NEW</text>
+  </g>
+</svg>
+  </div>
+
+  <div class="wrap post-head">
+    <div class="post-meta">
+      <a href="../" class="post-back">← All insights</a>
+      <span class="post-pillar">Platform & Cloud</span>
+      <span class="post-dot">·</span>
+      <span class="post-date">8 July 2026</span>
+      <span class="post-dot">·</span>
+      <span class="post-time">6 min read</span>
+    </div>
+    <h1 class="h-hero post-title">Modernisation without the rip and replace.</h1>
+    <p class="post-lead">Every travel business over fifteen years old has a system it cannot turn off. A PMS with twenty custom modules. A mid-office written in Java 1.4. A GDS session manager that talks to a mainframe over a socket that must not be closed. The vendor's slide says modernisation. The engineer's whiteboard says the vendor's slide has never met this system. Both are right. Neither is useful.</p>
+  </div>
+
+  <div class="wrap post-body">
+    
+        <section class="post-section reveal">
+          <span class="post-section-num">01</span>
+          <h2 class="h-section">The two failed strategies</h2>
+          <p>Strategy one is rip and replace. Buy a modern platform, migrate everything, sunset the old system inside eighteen months. It has never worked in travel. The custom modules were custom for a reason. The reason is still there. Strategy two is strangler fig. Wrap the old system in an API layer, route new features through the wrapper, deprecate the old system over time. It works in theory. In practice the wrapper becomes another system to maintain, and the old system continues to accept direct writes from three other places that were never inventoried.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">02</span>
+          <h2 class="h-section">The third strategy, which does work</h2>
+          <p>Boundary the old system. Do not wrap it, do not replace it. Draw a boundary around it and enforce that boundary in code. Every read is a contract. Every write is a queue. Every side effect is a documented event. Inside the boundary, the old system keeps working. Outside the boundary, new systems are free to move at their own pace. The old system does not get modernised. The business does.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">03</span>
+          <h2 class="h-section">What that looks like in a booking stack</h2>
+          <p>The GDS session manager stays. It is wrapped in a service that publishes every booking event to a message bus. A modern pricing engine reads from the bus, computes a rate, and writes back through the service. A modern loyalty engine reads from the same bus, credits a member, and never touches the GDS directly. If the pricing engine breaks, the GDS keeps working. If the GDS is down for a maintenance window, the bus holds the messages. The old system is not modernised. It is contained.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">04</span>
+          <h2 class="h-section">The economics</h2>
+          <p>Rip and replace costs eighteen months, a team of forty, and a chief executive's political capital. Boundary and modernise costs six months, a team of eight, and a very good architect. The old system will still be there in five years. That is fine. It works. What you are buying is the freedom to move everything around it at speed, without asking permission from the vendor who has not shipped a release in four quarters.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">05</span>
+          <h2 class="h-section">The single question to ask</h2>
+          <p>Before the next modernisation slide, ask one question. What is the smallest change we can make to the interface of the old system that lets every new system stop caring about it. If the answer is a queue, a documented event schema, and a service that owns the boundary, you have a plan. If the answer is a two-year migration, you have a slide.</p>
+        </section>
+
+
+    <section class="post-kicker reveal">
+      <p>We modernise travel platforms without asking clients to rip out the systems that still work. If your roadmap has a migration on it, we can probably shorten it.</p>
+      <div class="btn-group">
+        <a href="../../contact" class="btn btn--primary">Book a strategy call</a>
+        <a href="../" class="btn btn--ghost">More insights</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="section section--soft related-section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Continue reading</span>
+        <h2 class="h-section">Three more pieces from the desk.</h2>
+      </div>
+      <div class="related-grid">
+        
+          <a href="../rfp-broken-for-travel-tech" class="related-card">
+            <span class="related-pillar">Advisory</span>
+            <h3>The RFP is broken for travel technology.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+          <a href="../revenue-system-is-the-product" class="related-card">
+            <span class="related-pillar">Travel Commerce</span>
+            <h3>The revenue system is the product.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+          <a href="../agentic-booking-2026" class="related-card">
+            <span class="related-pillar">AI-Native</span>
+            <h3>Agentic booking, and what actually ships in 2026.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+
+<section class="section cta-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Talk to us</span>
+      <h2 class="h-section">If any of this rhymes with your roadmap, let's talk.</h2>
+      <p class="lead">A strategy call is a working session, not a pitch. Bring the problem, leave with the shape of an answer.</p>
+      <div class="btn-group">
+        <a href="../../contact" class="btn btn--primary">Book a strategy call</a>
+        <a href="../../approach" class="btn btn--ghost">Explore our approach</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="../../assets/techspian-logo-footer.svg?v=1783517595" alt="Techspian">
+        <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
+        <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul role="list">
+          <li><a href="../../capabilities">What We Do</a></li>
+          <li><a href="../../industries">Travel Verticals</a></li>
+          <li><a href="../../approach">How We Work</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul role="list">
+          <li><a href="../../work">Our Work</a></li>
+          <li><a href="../../about">About</a></li>
+          <li><a href="../../insights">Insights</a></li>
+          <li><a href="../../contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul role="list">
+          <li><a href="../../contact">Book a strategy call</a></li>
+          <li><a href="https://www.linkedin.com/company/techspian" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:marketing@techspian.com">marketing@techspian.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-marquee" aria-hidden="true">
+    <div class="marquee-track"><span>Travel commerce</span><span class="dot">·</span><span>AI-native</span><span class="dot">·</span><span>In production</span><span class="dot">·</span><span>Worldwide</span><span class="dot">·</span></div>
+  </div>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Techspian. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../app.js?v=1783517595"></script>
+</body>
+</html>
