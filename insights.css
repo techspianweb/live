@@ -28,11 +28,19 @@
   border-color: #01696F;
 }
 .insight-card-hero {
-  aspect-ratio: 16/7;
+  aspect-ratio: 16/9;
   overflow: hidden;
   background: #0C4E54;
+  position: relative;
 }
-.insight-card-hero svg { display: block; width: 100%; height: 100%; }
+.insight-card-hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.insight-card:hover .insight-card-hero img { transform: scale(1.03); }
 .insight-card-body { padding: 28px 28px 32px; }
 .insight-card-meta {
   display: flex; align-items: center; gap: 10px;
@@ -82,15 +90,27 @@
 /* -------- Post page -------- */
 .post-hero {
   width: 100%;
-  aspect-ratio: 5/2;
-  max-height: 380px;
+  aspect-ratio: 21/9;
+  max-height: 520px;
   overflow: hidden;
   background: #0C4E54;
+  position: relative;
 }
 @media (max-width: 720px) {
-  .post-hero { aspect-ratio: 4/3; max-height: 340px; }
+  .post-hero { aspect-ratio: 4/3; max-height: 380px; }
 }
-.post-hero svg { width: 100%; height: 100%; display: block; }
+.post-hero img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.post-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(12,37,29,0.35) 100%);
+  pointer-events: none;
+}
 
 .post-head {
   padding: 56px 0 24px;
