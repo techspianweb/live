@@ -600,6 +600,10 @@
 
 /* ----------------- CTA band (sage) ----------------- */
 .cta-band{background:var(--color-stone);text-align:center;position:relative;overflow:hidden}
+.cta-band .sec-head{max-width:none;margin-left:auto;margin-right:auto}
+.cta-band .sec-head .h-section{max-width:22ch;margin-left:auto;margin-right:auto}
+.cta-band .sec-head .lead{max-width:62ch;margin-left:auto;margin-right:auto}
+.cta-band .btn-group{justify-content:center}
 .cta-band::before{
   content:"";position:absolute;left:50%;top:-30%;width:60%;height:120%;
   background:radial-gradient(ellipse, rgba(58,165,210,.22) 0%, rgba(58,165,210,0) 60%);

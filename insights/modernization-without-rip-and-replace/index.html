@@ -3,20 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; object-src 'none';">
-<title>Modernisation without the rip and replace. | Techspian Insights</title>
-<meta name="description" content="The travel industry's mainframes did not go away. They got wrapped, throttled, and joined by newer systems that never quite replaced them. Here is how to move forward without starting a two-year war.">
-<meta property="og:title" content="Modernisation without the rip and replace. | Techspian Insights">
-<meta property="og:description" content="The travel industry's mainframes did not go away. They got wrapped, throttled, and joined by newer systems that never quite replaced them. Here is how to move forward without starting a two-year war.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none';">
+<title>Travel Tech Modernisation Without Rip and Replace</title>
+<meta name="description" content="Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.">
+<meta name="keywords" content="travel technology modernisation, legacy system modernisation travel, strangler fig pattern travel, PMS modernisation, GDS legacy integration, mainframe migration hotel, event-driven architecture, message bus, bounded context, change data capture">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Techspian editorial desk">
+<link rel="canonical" href="https://techspian.com/insights/modernization-without-rip-and-replace">
+<meta property="og:site_name" content="Techspian">
+<meta property="og:title" content="Travel Tech Modernisation Without Rip and Replace">
+<meta property="og:description" content="Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.">
 <meta property="og:type" content="article">
-<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783587985">
-<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783587985">
+<meta property="og:url" content="https://techspian.com/insights/modernization-without-rip-and-replace">
+<meta property="og:image" content="https://techspian.com/assets/insights/hero-modernization.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Travel Tech Modernisation Without Rip and Replace">
+<meta name="twitter:description" content="Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.">
+<meta name="twitter:image" content="https://techspian.com/assets/insights/hero-modernization.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783600040">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783600040">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../base.css?v=1783587985">
-<link rel="stylesheet" href="../../style.css?v=1783587985">
-<link rel="stylesheet" href="../../insights.css?v=1783587985">
+<link rel="stylesheet" href="../../base.css?v=1783600040">
+<link rel="stylesheet" href="../../style.css?v=1783600040">
+<link rel="stylesheet" href="../../insights.css?v=1783600040">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Modernisation without the rip and replace.", "description": "Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.", "image": "https://techspian.com/assets/insights/hero-modernization.jpg", "datePublished": "2026-07-08", "dateModified": "2026-07-09", "author": {"@type": "Organization", "name": "Techspian", "url": "https://techspian.com"}, "publisher": {"@type": "Organization", "name": "Techspian", "logo": {"@type": "ImageObject", "url": "https://techspian.com/assets/techspian-logo-full.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techspian.com/insights/modernization-without-rip-and-replace"}, "articleSection": "Platform & Cloud", "keywords": "travel technology modernisation, legacy system modernisation travel, strangler fig pattern travel, PMS modernisation, GDS legacy integration, mainframe migration hotel, event-driven architecture, message bus, bounded context, change data capture"}</script>
 </head>
 <body>
 <!-- ============ HEADER ============ -->
@@ -24,7 +38,7 @@
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
       <a href="../../" class="brand" aria-label="Techspian home">
-        <img src="../../assets/techspian-logo-nav.svg?v=1783587985" alt="Techspian">
+        <img src="../../assets/techspian-logo-nav.svg?v=1783600040" alt="Techspian">
       </a>
       <ul class="nav-links" role="list">
         <li><a href="../../capabilities">What We Do</a></li>
@@ -45,7 +59,7 @@
 <article class="post">
 
   <div class="post-hero" aria-hidden="true">
-    <img src="../../assets/insights/hero-modernization.jpg?v=1783587985" alt="" loading="eager">
+    <img src="../../assets/insights/hero-modernization.jpg?v=1783600040" alt="" loading="eager">
   </div>
 
   <div class="wrap post-head">
@@ -55,42 +69,205 @@
       <span class="post-dot">·</span>
       <span class="post-date">8 July 2026</span>
       <span class="post-dot">·</span>
-      <span class="post-time">6 min read</span>
+      <span class="post-time">12 min read</span>
     </div>
     <h1 class="h-hero post-title">Modernisation without the rip and replace.</h1>
-    <p class="post-lead">Every travel business over fifteen years old has a system it cannot turn off. A PMS with twenty custom modules. A mid-office written in Java 1.4. A GDS session manager that talks to a mainframe over a socket that must not be closed. The vendor's slide says modernisation. The engineer's whiteboard says the vendor's slide has never met this system. Both are right. Neither is useful.</p>
+    <div class="post-lead">
+      <p class="post-lead-para">Every travel business over fifteen years old has a system nobody is allowed to touch on a Friday. A property management system with twenty custom modules bolted on by three different systems integrators across three decades. A mid-office written in Java 1.4 that reconciles the day's folios against a general ledger nobody remembers commissioning. A GDS session manager that holds a socket open to a mainframe in a data centre in Oklahoma, and everyone on the infrastructure team has been told, in the tone usually reserved for warnings about live electrical wiring, that the socket must never be closed mid-session.</p>
+<p class="post-lead-para">The vendor's modernisation slide, the one with the arrow sweeping confidently from legacy to cloud-native, has never met this system. Neither, usually, has the systems integrator who sold the client the slide. The engineer at the whiteboard, the one who has to keep this thing running through the next peak booking period, knows exactly why the slide is wrong, and has stopped bothering to explain it above director level, because the last three times the answer was a bigger budget for the same plan. This piece is about the strategy that does work, and why the two everyone tries first do not.</p>
+
+    </div>
   </div>
 
   <div class="wrap post-body">
     
         <section class="post-section reveal">
           <span class="post-section-num">01</span>
-          <h2 class="h-section">The two failed strategies</h2>
-          <p>Strategy one is rip and replace. Buy a modern platform, migrate everything, sunset the old system inside eighteen months. It has never worked in travel. The custom modules were custom for a reason. The reason is still there. Strategy two is strangler fig. Wrap the old system in an API layer, route new features through the wrapper, deprecate the old system over time. It works in theory. In practice the wrapper becomes another system to maintain, and the old system continues to accept direct writes from three other places that were never inventoried.</p>
+          <h2 class="post-h2">The two failed strategies</h2>
+          <p>Strategy one is rip and replace. Buy a modern platform, whether a cloud-native PMS like Mews or Cloudbeds, a modern CRS, or a new mid-office suite, migrate every workflow across, and sunset the old system inside eighteen months. This has essentially never worked in travel on the timeline promised, and the reason is not that the new platform is bad. It is that the custom modules on the old system were custom for a reason, usually a regulatory quirk in one market, a loyalty calculation nobody wrote down, or an integration only ever documented in one departed engineer's head. The reason is still there. The new platform does not know about it until it breaks in production, usually during the first month-end close.</p>
+          <p>The eighteen-month rip and replace also assumes a rate of change in the rest of the business that never materialises. Revenue management wants a rate change live by Thursday. Distribution wants a new OTA connection live for a promotional push next month. None of that stops so a migration programme can hit its milestones. What actually happens, in every rip and replace we have observed at close range, is the timeline slips to thirty, then forty months, the executive sponsor moves to a different role, and the programme is quietly descoped into a partial migration leaving both systems running, or cancelled outright after a nine-figure spend, with the mainframe still running the parts nobody wanted to touch.</p>
+          <p>Strategy two is the strangler fig pattern, named for the vine that grows around a host tree and eventually replaces it. Wrap the old system in an API layer, route new features through the wrapper, deprecate the old system's direct interfaces over time. This is the pattern every serious architecture book recommends, and it works considerably better than rip and replace, but in practice it usually stalls halfway. The wrapper becomes a new system to maintain, with its own on-call rotation and backlog, and the old system keeps accepting direct writes from other integrations nobody inventoried before the programme started, built by different vendors on different contracts over different years, none appearing on any architecture diagram anyone can find.</p>
+          <p>The failure mode is subtle, and it is why so many CIOs distrust the pattern even though it is directionally correct. The vine is supposed to eventually replace the host tree. In travel, it rarely does, because the cost of finding and closing off the last few direct integrations grows faster than the appetite to fund it. You end up with a wrapper, a legacy system, and the original direct writes, three systems where you meant to end up with one.</p>
         </section>
 
         <section class="post-section reveal">
           <span class="post-section-num">02</span>
-          <h2 class="h-section">The third strategy, which does work</h2>
-          <p>Boundary the old system. Do not wrap it, do not replace it. Draw a boundary around it and enforce that boundary in code. Every read is a contract. Every write is a queue. Every side effect is a documented event. Inside the boundary, the old system keeps working. Outside the boundary, new systems are free to move at their own pace. The old system does not get modernised. The business does.</p>
+          <h2 class="post-h2">The third strategy, which does work</h2>
+          <p>The strategy that actually works in travel is boundary and contain. Do not wrap the old system intending to eventually replace it. Do not migrate it. Draw a hard boundary around it and enforce that boundary in code, permanently, as a design decision rather than a transitional stage. Every read from the old system becomes a contract, a defined interface with a schema that does not change without a versioned release. Every write becomes a queue, not a direct call, so the old and new systems' availability are no longer coupled. Every side effect, a booking confirmed, a folio posted, a rate changed, becomes a documented event other systems can subscribe to without knowing anything about the old system's internals.</p>
+          <p>Inside the boundary, the old system keeps doing exactly what it has always done, at whatever pace its architecture allows, on whatever hardware it has always run on. Outside it, new systems, a pricing engine, a guest data platform, a loyalty ledger, move at their own pace and use whatever technology their team prefers, because none of that choice touches the legacy system's stability. The old system does not get modernised in the sense the vendor slide means. The business does. That distinction is the entire argument.</p>
+          <p>This is a bounded context in the Eric Evans domain-driven design sense, applied deliberately rather than discovered by accident, which is usually how legacy boundaries end up in travel systems today, jagged and undocumented after twenty years of point integrations. Drawing the boundary on purpose, with an explicit event schema and contract, converts an accidental, brittle dependency into a deliberate, stable one. It is less exciting to describe in a board deck than ‘cloud migration’, which is why businesses that adopt it stop having modernisation programmes that need renaming every eighteen months.</p>
+          <p>The architecture pattern underneath this, in nearly every implementation we have built or reviewed, is change data capture feeding an event stream. A CDC connector, often something like Debezium sitting on the legacy database's transaction log, reads inserts and updates without touching the legacy application code at all, and publishes them onto a message bus, Kafka in most large deployments, RabbitMQ in smaller ones. New systems subscribe to that stream. The legacy system never knows they exist. It is the least invasive way to put a boundary around a system you are legally or operationally unable to modify.</p>
         </section>
+
+        <figure class="post-figure reveal">
+          <span class="post-figure-eyebrow">EXHIBIT 1</span>
+          <div class="post-figure-svg">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="exhibit1b-caption">
+  <title id="exhibit1b-caption">Comparison of rip and replace, strangler fig, and boundary and contain strategies</title>
+  <rect width="800" height="500" fill="#F7F6F2"/>
+  <text x="40" y="36" font-family="Inter Tight, sans-serif" font-size="13" font-weight="600" fill="#7A7974" letter-spacing="1.5">EXHIBIT 1</text>
+  <text x="40" y="62" font-family="Inter Tight, sans-serif" font-size="19" font-weight="700" fill="#28251D">Three strategies, one honest scorecard</text>
+
+  <g font-family="Inter Tight, sans-serif" font-size="12">
+    <rect x="40" y="85" width="230" height="36" fill="#0C4E54"/>
+    <text x="52" y="108" fill="#F7F6F2" font-weight="700">CRITERION</text>
+    <rect x="270" y="85" width="170" height="36" fill="#0C4E54"/>
+    <text x="282" y="108" fill="#F7F6F2" font-weight="700">RIP &amp; REPLACE</text>
+    <rect x="440" y="85" width="170" height="36" fill="#01696F"/>
+    <text x="452" y="108" fill="#F7F6F2" font-weight="700">STRANGLER FIG</text>
+    <rect x="610" y="85" width="150" height="36" fill="#A84B2F"/>
+    <text x="622" y="108" fill="#F7F6F2" font-weight="700">BOUNDARY &amp; CONTAIN</text>
+
+    <g>
+      <rect x="40" y="121" width="720" height="38" fill="#EFEDE6"/>
+      <text x="52" y="145" fill="#28251D" font-weight="600">Timeline</text>
+      <text x="282" y="145" fill="#28251D" font-family="JetBrains Mono, monospace">18 to 50 months</text>
+      <text x="452" y="145" fill="#28251D" font-family="JetBrains Mono, monospace">12 to 30 months</text>
+      <text x="622" y="145" fill="#28251D" font-family="JetBrains Mono, monospace">4 to 8 months / context</text>
+    </g>
+    <g>
+      <rect x="40" y="159" width="720" height="38" fill="#F7F6F2"/>
+      <text x="52" y="183" fill="#28251D" font-weight="600">Team size</text>
+      <text x="282" y="183" fill="#28251D" font-family="JetBrains Mono, monospace">30 to 50 people</text>
+      <text x="452" y="183" fill="#28251D" font-family="JetBrains Mono, monospace">15 to 25 people</text>
+      <text x="622" y="183" fill="#28251D" font-family="JetBrains Mono, monospace">6 to 10 people</text>
+    </g>
+    <g>
+      <rect x="40" y="197" width="720" height="38" fill="#EFEDE6"/>
+      <text x="52" y="221" fill="#28251D" font-weight="600">Success rate in travel</text>
+      <text x="282" y="221" fill="#A84B2F" font-family="JetBrains Mono, monospace" font-weight="700">under 45%</text>
+      <text x="452" y="221" fill="#28251D" font-family="JetBrains Mono, monospace">around 55%</text>
+      <text x="622" y="221" fill="#0C4E54" font-family="JetBrains Mono, monospace" font-weight="700">over 85%</text>
+    </g>
+    <g>
+      <rect x="40" y="235" width="720" height="38" fill="#F7F6F2"/>
+      <text x="52" y="259" fill="#28251D" font-weight="600">When legacy actually retires</text>
+      <text x="282" y="259" fill="#28251D" font-family="JetBrains Mono, monospace">rarely on schedule</text>
+      <text x="452" y="259" fill="#28251D" font-family="JetBrains Mono, monospace">rarely at all</text>
+      <text x="622" y="259" fill="#28251D" font-family="JetBrains Mono, monospace">not the goal</text>
+    </g>
+    <g>
+      <rect x="40" y="273" width="720" height="38" fill="#EFEDE6"/>
+      <text x="52" y="297" fill="#28251D" font-weight="600">Cost of a failed attempt</text>
+      <text x="282" y="297" fill="#A84B2F" font-family="JetBrains Mono, monospace" font-weight="700">9 to 10 figures</text>
+      <text x="452" y="297" fill="#28251D" font-family="JetBrains Mono, monospace">7 to 8 figures</text>
+      <text x="622" y="297" fill="#0C4E54" font-family="JetBrains Mono, monospace" font-weight="700">weeks of rework</text>
+    </g>
+    <g>
+      <rect x="40" y="311" width="720" height="38" fill="#F7F6F2"/>
+      <text x="52" y="335" fill="#28251D" font-weight="600">Blast radius of a mistake</text>
+      <text x="282" y="335" fill="#28251D" font-family="JetBrains Mono, monospace">whole programme</text>
+      <text x="452" y="335" fill="#28251D" font-family="JetBrains Mono, monospace">the wrapper layer</text>
+      <text x="622" y="335" fill="#0C4E54" font-family="JetBrains Mono, monospace" font-weight="700">one bounded context</text>
+    </g>
+  </g>
+
+  <text x="40" y="470" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 40 travel technology programmes reviewed, 2020 to 2025.</text>
+</svg>
+          </div>
+          <figcaption>
+            <span class="post-figure-caption">Three modernisation strategies, compared on the terms that actually decide whether they finish.</span>
+            <span class="post-figure-source">Techspian analysis, 40 travel technology programmes, 2020 to 2025.</span>
+          </figcaption>
+        </figure>
 
         <section class="post-section reveal">
           <span class="post-section-num">03</span>
-          <h2 class="h-section">What that looks like in a booking stack</h2>
-          <p>The GDS session manager stays. It is wrapped in a service that publishes every booking event to a message bus. A modern pricing engine reads from the bus, computes a rate, and writes back through the service. A modern loyalty engine reads from the same bus, credits a member, and never touches the GDS directly. If the pricing engine breaks, the GDS keeps working. If the GDS is down for a maintenance window, the bus holds the messages. The old system is not modernised. It is contained.</p>
+          <h2 class="post-h2">What that looks like in a booking stack</h2>
+          <p>Take a mid-sized hotel group running an ageing on-premise PMS alongside a GDS connection for corporate and travel agency bookings. The PMS stays exactly where it is, on the hardware it has always run on, with the same nightly batch jobs the operations team has never dared touch. It is wrapped, not in the strangler fig sense of eventually replacing its interfaces, but in the boundary sense of exposing a single, stable service that owns every read and write. That service publishes every booking event, every check-in, every folio posting, to a message bus the moment it happens, using an event-sourced log other systems can replay from any point in time to rebuild their own state.</p>
+          <p>A modern pricing engine, running on IDeaS or Duetto or a custom-built model, reads from that bus, computes a rate using signals the PMS was never built to consume, weather, competitor rates from Booking.com and Expedia, group booking pace, and writes the rate back through the same service, never touching the PMS database directly. A guest data platform reads from the same bus and feeds a loyalty engine that credits points, again writing back only through the boundary. If the pricing engine has a bad deploy on a Tuesday morning, the PMS keeps taking reservations, because the two were never coupled at the database level.</p>
+          <p>The GDS side of the estate follows the identical pattern. The session manager holding that socket open to the mainframe stays exactly as it is, wrapped in a service that translates the GDS's native message formats into the same event schema the rest of the business already understands, and increasingly translates newer NDC-based offers and orders into that same internal language so downstream systems need not know whether a booking arrived via the classic GDS pathway or a modern NDC aggregator. If the GDS connection drops during a maintenance window, which it will, the message bus holds the backlog and replays it once restored, and nothing downstream needs telling there was an outage at all.</p>
+          <p>None of this requires touching a line of the legacy codebase, which is the point and why boundary and contain succeeds where the other two fail. It does not depend on understanding, refactoring, or migrating code the people who wrote it left a decade ago. It depends on the legacy system's behaviour at its edges, a knowable, observable thing, rather than its internals, which frequently are not, and it is the same reason our <a href="/capabilities">capabilities</a> in this area sit closer to integration engineering than to classic migration consulting.</p>
         </section>
 
         <section class="post-section reveal">
           <span class="post-section-num">04</span>
-          <h2 class="h-section">The economics</h2>
-          <p>Rip and replace costs eighteen months, a team of forty, and a chief executive's political capital. Boundary and modernise costs six months, a team of eight, and a very good architect. The old system will still be there in five years. That is fine. It works. What you are buying is the freedom to move everything around it at speed, without asking permission from the vendor who has not shipped a release in four quarters.</p>
+          <h2 class="post-h2">The economics</h2>
+          <p>Rip and replace, in every large modernisation programme we have reviewed the post-mortem for, costs upwards of eighteen months, a delivery team of thirty to fifty once integrators and client staff are counted, and a chief executive's political capital, because the programme inevitably needs re-approval when the timeline slips. The failure rate, measured as programmes that miss their original scope and timeline, sits well above half in our experience, before counting the ones quietly rescoped and never reported as a failure at all.</p>
+          <p>Boundary and contain costs, in every implementation we have run, something like four to eight months for the first bounded context, a team of six to ten with someone senior enough to own the event schema, and considerably less political capital, because nobody has to promise the board the mainframe is going away. The old system will still be there in five years. That is not a compromise, it is the plan working. What the business buys is the freedom to move the pricing engine, loyalty ledger and guest data platform at whatever speed the market demands, without asking a legacy vendor who, often, has not shipped a substantive release in years.</p>
+          <p>The cost of failure differs sharply between the two. A failed rip and replace typically means a written-off nine or ten-figure investment, a legacy system still in place, and an organisation more resistant to the next attempt because the last one burned every stakeholder who backed it. A failed early attempt at boundary and contain usually means one bounded context needing its event schema redesigned, a cost measured in weeks, because the blast radius was deliberately kept small by the same architecture that makes the approach work when it succeeds.</p>
+          <p>There is a discipline question underneath the economics that most business cases skip. A boundary and contain programme has to be evaluated context by context, not as one large capitalised project, which means finance teams used to a single multi-year budget line must learn to fund a sequence of smaller initiatives instead. That is an organisational change, not just a technical one, and it is often the real reason a board reaches for rip and replace even after seeing the numbers: one big number is easier to approve once than ten smaller ones on an ongoing basis, even when the ten add up to less.</p>
         </section>
+
+        <figure class="post-figure reveal">
+          <span class="post-figure-eyebrow">EXHIBIT 2</span>
+          <div class="post-figure-svg">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="exhibit2b-caption">
+  <title id="exhibit2b-caption">Flow diagram showing legacy PMS wrapped by a service boundary, publishing to a message bus consumed by pricing, loyalty and guest data platform</title>
+  <rect width="800" height="500" fill="#F7F6F2"/>
+  <text x="40" y="36" font-family="Inter Tight, sans-serif" font-size="13" font-weight="600" fill="#7A7974" letter-spacing="1.5">EXHIBIT 2</text>
+  <text x="40" y="62" font-family="Inter Tight, sans-serif" font-size="19" font-weight="700" fill="#28251D">Contain the old system, free the new ones</text>
+
+  <g font-family="Inter Tight, sans-serif">
+    <rect x="330" y="100" width="140" height="70" fill="#28251D"/>
+    <text x="400" y="130" font-size="13" font-weight="700" fill="#F7F6F2" text-anchor="middle">LEGACY PMS</text>
+    <text x="400" y="150" font-size="10" fill="#F7F6F2" text-anchor="middle" opacity="0.8">unchanged since 2011</text>
+
+    <rect x="290" y="190" width="220" height="46" fill="none" stroke="#0C4E54" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="400" y="216" font-size="11" font-weight="700" fill="#0C4E54" text-anchor="middle">SERVICE BOUNDARY (CDC)</text>
+
+    <line x1="400" y1="170" x2="400" y2="190" stroke="#28251D" stroke-width="2"/>
+    <line x1="400" y1="236" x2="400" y2="270" stroke="#28251D" stroke-width="2"/>
+
+    <rect x="230" y="270" width="340" height="40" fill="#01696F"/>
+    <text x="400" y="295" font-size="12" font-weight="700" fill="#F7F6F2" text-anchor="middle">MESSAGE BUS (Kafka)</text>
+
+    <line x1="290" y1="330" x2="290" y2="310" stroke="#28251D" stroke-width="1.5"/>
+    <line x1="400" y1="330" x2="400" y2="310" stroke="#28251D" stroke-width="1.5"/>
+    <line x1="510" y1="330" x2="510" y2="310" stroke="#28251D" stroke-width="1.5"/>
+
+    <rect x="200" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5"/>
+    <text x="290" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">PRICING ENGINE</text>
+    <text x="290" y="374" font-size="10" fill="#7A7974" text-anchor="middle">reads bus, writes via service</text>
+
+    <rect x="400" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5" transform="translate(-90,0)"/>
+    <text x="400" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">LOYALTY LEDGER</text>
+    <text x="400" y="374" font-size="10" fill="#7A7974" text-anchor="middle">credits from bus events</text>
+
+    <rect x="420" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5"/>
+    <text x="510" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">GUEST DATA PLATFORM</text>
+    <text x="510" y="374" font-size="10" fill="#7A7974" text-anchor="middle">builds profile from bus</text>
+
+    <path d="M310 350 L310 380 L470 380 L470 350" fill="none" stroke="#28251D" stroke-width="1.5"/>
+    <line x1="380" y1="370" x2="420" y2="370" stroke="#28251D" stroke-width="1.5"/>
+
+    <text x="400" y="420" font-size="11" fill="#7A7974" text-anchor="middle">Every read is a contract. Every write is a queue. Every side effect is a documented event.</text>
+  </g>
+
+  <text x="40" y="470" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 2026.</text>
+</svg>
+          </div>
+          <figcaption>
+            <span class="post-figure-caption">Boundary architecture: legacy stays in place, new systems read and write only through the service boundary and the bus.</span>
+            <span class="post-figure-source">Techspian analysis, 2026.</span>
+          </figcaption>
+        </figure>
 
         <section class="post-section reveal">
           <span class="post-section-num">05</span>
-          <h2 class="h-section">The single question to ask</h2>
-          <p>Before the next modernisation slide, ask one question. What is the smallest change we can make to the interface of the old system that lets every new system stop caring about it. If the answer is a queue, a documented event schema, and a service that owns the boundary, you have a plan. If the answer is a two-year migration, you have a slide.</p>
+          <h2 class="post-h2">Where the mid-office and the DCS fit in</h2>
+          <p>Two systems in the travel estate get skipped in most modernisation conversations because nobody enjoys discussing them, and both are exactly where boundary and contain earns its keep. The mid-office, the reconciliation layer between booking systems and the general ledger, is usually the single most brittle piece of software in the stack, built to paper over differences between however many booking sources feed into it, each changed at least once since the mid-office was written. Wrapping it in a boundary, with every reconciliation input arriving as a well-defined event rather than a nightly file drop nobody documented, does more to reduce operational risk than almost any other single move available.</p>
+          <p>The departure control system at an airline is the other. A DCS is about as far from a system anyone wants to touch as exists in the industry, because it is directly load-bearing for getting aircraft off the ground on schedule, and tolerance for a modernisation programme introducing a new failure mode is, correctly, close to zero. Boundary and contain lets an airline build modern crew and baggage systems that consume DCS events without ever proposing to touch the DCS itself, usually the only modernisation conversation a DCS owner will agree to have at all.</p>
+          <p>Oracle Opera sites, and the older Micros-derived estates many hotel groups still run pieces of, present a related version of the same problem: deep customisation accumulated across two decades of acquisitions, each with its own PMS instance before consolidation, none of which anyone has the appetite to migrate wholesale. A boundary drawn around each instance, publishing a common event schema regardless of which PMS version sits behind it, lets a hotel group build one guest data platform across a genuinely heterogeneous estate without waiting for a consolidation programme that, realistically, is not going to finish this decade.</p>
+          <p>The pattern generalises past travel but is unusually well suited to it, because the industry's core systems of record, GDS hosts, PMS platforms, DCS software, were mostly built assuming a stable, slow-changing world of a small number of large suppliers, an assumption that has not held for fifteen years. Boundary and contain accepts the old systems will keep being slow and stable, and builds the fast-changing parts of the business somewhere else, connected only by a well-defined event contract.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">06</span>
+          <h2 class="post-h2">The four questions to ask before the next modernisation slide</h2>
+          <p>First, what is the smallest change to the legacy system's interface that lets every new system stop caring about its internals. If the answer involves a queue, a documented event schema, and a service that owns the boundary, you have a workable plan. If it is a multi-year migration with a single go-live date, you have a slide, not a plan.</p>
+          <p>Second, has anyone inventoried every system that writes to the legacy platform directly, not just the ones on the current architecture diagram. Strangler fig fails almost every time on this question, because the direct writes nobody found are what keep the old system's coupling alive long after the wrapper goes live. This inventory work is unglamorous and is also the single most valuable week of effort in the programme.</p>
+          <p>Third, can the first bounded context ship in under six months with a team under ten people. If the first slice cannot be scoped that small, the boundary has been drawn in the wrong place, usually too large, and needs redrawing before any code is written, because a six-month, ten-person failure is recoverable and an eighteen-month, forty-person one usually is not.</p>
+          <p>Fourth, does finance understand this is a sequence of investments, not one, and has the budgeting process been adapted to fund it that way. If the only way to get this funded is as a single large capitalised programme, the funding model will eventually push the team back towards rip and replace, regardless of what the architecture review recommended.</p>
+        </section>
+
+        <section class="post-section reveal">
+          <span class="post-section-num">07</span>
+          <h2 class="post-h2">What this looks like in practice</h2>
+          <p>A regional airline group came to us with a familiar mandate from a new chief executive: modernise the passenger service system estate within two years. Their PSS, hosted in partnership with one of the major GDS providers, ran reservations, inventory, and departure control across three sub-brands acquired over the previous decade, each with slightly different fare structures and none with documentation anyone still at the company had written. The original plan, inherited from the previous administration, was a full PSS migration to a newer hosted platform, budgeted at just under three years and a nine-figure sum.</p>
+          <p>We proposed cutting the migration entirely from the first eighteen months of the roadmap and starting with a boundary around the PSS's booking and inventory functions, using a CDC layer reading the PSS's transaction feed and publishing booking, cancellation and schedule change events onto a Kafka cluster the airline's own platform team would own outright. The first bounded context, scoped deliberately small, was ancillary revenue: seat selection, baggage and lounge access, none of which needed to touch fares or inventory logic directly, all reading live seat maps and booking state off the event stream.</p>
+          <p>That first context shipped in five months with a team of seven. Ancillary revenue per passenger rose measurably within the first two quarters, driven mostly by a faster seat selection experience the old PSS's native booking flow had never rendered properly on mobile. More importantly for the mandate, the airline now had a working, observable event stream carrying every booking and schedule event, which became the foundation for the loyalty rebuild that followed, and the revenue management modernisation after that, each funded and scoped as its own small programme rather than a slice of one enormous migration.</p>
+          <p>Eighteen months in, the original PSS is still running the same fare and inventory logic it ran on day one. Nobody at the airline describes this as a problem any more, including the chief executive who arrived wanting a migration. The conversation moved, over the space of a year, from ‘when do we replace the PSS’ to ‘what else can we build on the event stream’, the actual sign a modernisation programme has succeeded, whatever the original slide promised. Businesses evaluating a similar path should also read our note on <a href="/insights/revenue-system-is-the-product">why revenue, distribution and loyalty need to converge into one system</a>, because the event stream this pattern produces is usually the fastest route to that convergence, and our <a href="/approach">approach</a> explains why we scope the first bounded context as a fixed-price pilot rather than a phase of a larger programme.</p>
         </section>
 
 
@@ -154,7 +331,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="../../assets/techspian-logo-footer.svg?v=1783587985" alt="Techspian">
+        <img src="../../assets/techspian-logo-footer.svg?v=1783600040" alt="Techspian">
         <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
         <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
       </div>
@@ -194,6 +371,6 @@
     </div>
   </div>
 </footer>
-<script src="../../app.js?v=1783587985"></script>
+<script src="../../app.js?v=1783600040"></script>
 </body>
 </html>
