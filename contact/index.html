@@ -9,13 +9,13 @@
 <meta property="og:title" content="Contact | Techspian">
 <meta property="og:description" content="Bring us the problem you are trying to solve. We will tell you what we would do, and then we will build it.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=1783518882">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png?v=1783518882">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=1783587985">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png?v=1783587985">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="base.css?v=1783518882">
-<link rel="stylesheet" href="style.css?v=1783518882">
+<link rel="stylesheet" href="base.css?v=1783587985">
+<link rel="stylesheet" href="style.css?v=1783587985">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
       <a href="/" class="brand" aria-label="Techspian home">
-        <img src="assets/techspian-logo-nav.svg?v=1783518882" alt="Techspian">
+        <img src="assets/techspian-logo-nav.svg?v=1783587985" alt="Techspian">
       </a>
             <ul class="nav-links" role="list">
         <li><a href="capabilities">What We Do</a></li>
@@ -86,7 +86,11 @@
 
       <!-- Form card -->
       <div class="form-card">
-        <form novalidate>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="88380840-9bd5-43ff-bd6d-a1dab796b877">
+          <input type="hidden" name="subject" value="New enquiry from techspian.com">
+          <input type="hidden" name="from_name" value="techspian.com contact form">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row cols-2" style="margin-bottom:var(--space-5)">
             <div>
               <label class="form-label" for="name">Name</label>
@@ -123,8 +127,45 @@
             <button type="submit" class="btn btn--primary">Send the message</button>
             <span style="font-size:var(--text-xs);color:var(--color-charcoal)">We reply within one business day.</span>
           </div>
-          <p role="status" aria-live="polite" style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-charcoal)"></p>
+          <p id="form-status" role="status" aria-live="polite" style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-charcoal)"></p>
         </form>
+        <script>
+          (function(){
+            var form = document.getElementById('contact-form');
+            var status = document.getElementById('form-status');
+            var btn = form.querySelector('button[type="submit"]');
+            form.addEventListener('submit', function(e){
+              e.preventDefault();
+              if (!form.checkValidity()) { form.reportValidity(); return; }
+              var original = btn.textContent;
+              btn.disabled = true;
+              btn.textContent = 'Sending...';
+              status.style.color = 'var(--color-charcoal)';
+              status.textContent = '';
+              var data = new FormData(form);
+              fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+                .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, body: j }; }); })
+                .then(function(res){
+                  if (res.ok && res.body && res.body.success) {
+                    form.reset();
+                    status.style.color = '#0C4E54';
+                    status.textContent = 'Thanks — your message is in. We reply within one business day.';
+                  } else {
+                    status.style.color = '#A12C7B';
+                    status.textContent = (res.body && res.body.message) ? res.body.message : 'Something went wrong. Please email us at marketing@techspian.com.';
+                  }
+                })
+                .catch(function(){
+                  status.style.color = '#A12C7B';
+                  status.textContent = 'Network error. Please email us at marketing@techspian.com.';
+                })
+                .finally(function(){
+                  btn.disabled = false;
+                  btn.textContent = original;
+                });
+            });
+          })();
+        </script>
       </div>
 
     </div>
@@ -181,7 +222,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/techspian-logo-footer.svg?v=1783518882" alt="Techspian">
+        <img src="assets/techspian-logo-footer.svg?v=1783587985" alt="Techspian">
         <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
         <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
       </div>
@@ -222,6 +263,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=1783518882"></script>
+<script src="app.js?v=1783587985"></script>
 </body>
 </html>
