@@ -22,14 +22,14 @@
 <meta name="twitter:title" content="Travel Tech Modernisation Without Rip and Replace">
 <meta name="twitter:description" content="Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.">
 <meta name="twitter:image" content="https://techspian.com/assets/insights/hero-modernization.jpg">
-<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783600040">
-<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783600040">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783669472">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783669472">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../base.css?v=1783600040">
-<link rel="stylesheet" href="../../style.css?v=1783600040">
-<link rel="stylesheet" href="../../insights.css?v=1783600040">
+<link rel="stylesheet" href="../../base.css?v=1783669472">
+<link rel="stylesheet" href="../../style.css?v=1783669472">
+<link rel="stylesheet" href="../../insights.css?v=1783669472">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Modernisation without the rip and replace.", "description": "Rip and replace fails in travel. Strangler fig stalls. Boundary and contain works. How to modernise legacy PMS, GDS and CRS systems properly.", "image": "https://techspian.com/assets/insights/hero-modernization.jpg", "datePublished": "2026-07-08", "dateModified": "2026-07-09", "author": {"@type": "Organization", "name": "Techspian", "url": "https://techspian.com"}, "publisher": {"@type": "Organization", "name": "Techspian", "logo": {"@type": "ImageObject", "url": "https://techspian.com/assets/techspian-logo-full.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techspian.com/insights/modernization-without-rip-and-replace"}, "articleSection": "Platform & Cloud", "keywords": "travel technology modernisation, legacy system modernisation travel, strangler fig pattern travel, PMS modernisation, GDS legacy integration, mainframe migration hotel, event-driven architecture, message bus, bounded context, change data capture"}</script>
 </head>
 <body>
@@ -38,7 +38,7 @@
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
       <a href="../../" class="brand" aria-label="Techspian home">
-        <img src="../../assets/techspian-logo-nav.svg?v=1783600040" alt="Techspian">
+        <img src="../../assets/techspian-logo-nav.svg?v=1783669472" alt="Techspian">
       </a>
       <ul class="nav-links" role="list">
         <li><a href="../../capabilities">What We Do</a></li>
@@ -59,7 +59,7 @@
 <article class="post">
 
   <div class="post-hero" aria-hidden="true">
-    <img src="../../assets/insights/hero-modernization.jpg?v=1783600040" alt="" loading="eager">
+    <img src="../../assets/insights/hero-modernization.jpg?v=1783669472" alt="" loading="eager">
   </div>
 
   <div class="wrap post-head">
@@ -81,7 +81,27 @@
 
   <div class="wrap post-body">
     
-        <section class="post-section reveal">
+      <nav class="post-toc" aria-label="Article contents">
+        <details class="post-toc-details" open>
+          <summary>
+            <span class="post-toc-eyebrow">In this piece</span>
+            <span class="post-toc-summary-arrow" aria-hidden="true">›</span>
+          </summary>
+          <ol class="post-toc-list">
+            <li><a href="#s01-the-two-failed-strategies"><span class="toc-num">01</span><span class="toc-label">The two failed strategies</span></a></li>
+          <li><a href="#s02-the-third-strategy-which-does-work"><span class="toc-num">02</span><span class="toc-label">The third strategy, which does work</span></a></li>
+          <li><a href="#s03-what-that-looks-like-in-a-booking-stack"><span class="toc-num">03</span><span class="toc-label">What that looks like in a booking stack</span></a></li>
+          <li><a href="#s04-the-economics"><span class="toc-num">04</span><span class="toc-label">The economics</span></a></li>
+          <li><a href="#s05-where-the-mid-office-and-the-dcs-fit-in"><span class="toc-num">05</span><span class="toc-label">Where the mid-office and the DCS fit in</span></a></li>
+          <li><a href="#s06-the-four-questions-to-ask-before-the-next-modernisation-slide"><span class="toc-num">06</span><span class="toc-label">The four questions to ask before the next modernisation slide</span></a></li>
+          <li><a href="#s07-what-this-looks-like-in-practice"><span class="toc-num">07</span><span class="toc-label">What this looks like in practice</span></a></li>
+          </ol>
+        </details>
+      </nav>
+
+    <div class="post-body-inner">
+    
+        <section class="post-section reveal" id="s01-the-two-failed-strategies">
           <span class="post-section-num">01</span>
           <h2 class="post-h2">The two failed strategies</h2>
           <p>Strategy one is rip and replace. Buy a modern platform, whether a cloud-native PMS like Mews or Cloudbeds, a modern CRS, or a new mid-office suite, migrate every workflow across, and sunset the old system inside eighteen months. This has essentially never worked in travel on the timeline promised, and the reason is not that the new platform is bad. It is that the custom modules on the old system were custom for a reason, usually a regulatory quirk in one market, a loyalty calculation nobody wrote down, or an integration only ever documented in one departed engineer's head. The reason is still there. The new platform does not know about it until it breaks in production, usually during the first month-end close.</p>
@@ -90,7 +110,7 @@
           <p>The failure mode is subtle, and it is why so many CIOs distrust the pattern even though it is directionally correct. The vine is supposed to eventually replace the host tree. In travel, it rarely does, because the cost of finding and closing off the last few direct integrations grows faster than the appetite to fund it. You end up with a wrapper, a legacy system, and the original direct writes, three systems where you meant to end up with one.</p>
         </section>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s02-the-third-strategy-which-does-work">
           <span class="post-section-num">02</span>
           <h2 class="post-h2">The third strategy, which does work</h2>
           <p>The strategy that actually works in travel is boundary and contain. Do not wrap the old system intending to eventually replace it. Do not migrate it. Draw a hard boundary around it and enforce that boundary in code, permanently, as a design decision rather than a transitional stage. Every read from the old system becomes a contract, a defined interface with a schema that does not change without a versioned release. Every write becomes a queue, not a direct call, so the old and new systems' availability are no longer coupled. Every side effect, a booking confirmed, a folio posted, a rate changed, becomes a documented event other systems can subscribe to without knowing anything about the old system's internals.</p>
@@ -171,7 +191,7 @@
           </figcaption>
         </figure>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s03-what-that-looks-like-in-a-booking-stack">
           <span class="post-section-num">03</span>
           <h2 class="post-h2">What that looks like in a booking stack</h2>
           <p>Take a mid-sized hotel group running an ageing on-premise PMS alongside a GDS connection for corporate and travel agency bookings. The PMS stays exactly where it is, on the hardware it has always run on, with the same nightly batch jobs the operations team has never dared touch. It is wrapped, not in the strangler fig sense of eventually replacing its interfaces, but in the boundary sense of exposing a single, stable service that owns every read and write. That service publishes every booking event, every check-in, every folio posting, to a message bus the moment it happens, using an event-sourced log other systems can replay from any point in time to rebuild their own state.</p>
@@ -180,7 +200,7 @@
           <p>None of this requires touching a line of the legacy codebase, which is the point and why boundary and contain succeeds where the other two fail. It does not depend on understanding, refactoring, or migrating code the people who wrote it left a decade ago. It depends on the legacy system's behaviour at its edges, a knowable, observable thing, rather than its internals, which frequently are not, and it is the same reason our <a href="/capabilities">capabilities</a> in this area sit closer to integration engineering than to classic migration consulting.</p>
         </section>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s04-the-economics">
           <span class="post-section-num">04</span>
           <h2 class="post-h2">The economics</h2>
           <p>Rip and replace, in every large modernisation programme we have reviewed the post-mortem for, costs upwards of eighteen months, a delivery team of thirty to fifty once integrators and client staff are counted, and a chief executive's political capital, because the programme inevitably needs re-approval when the timeline slips. The failure rate, measured as programmes that miss their original scope and timeline, sits well above half in our experience, before counting the ones quietly rescoped and never reported as a failure at all.</p>
@@ -192,49 +212,76 @@
         <figure class="post-figure reveal">
           <span class="post-figure-eyebrow">EXHIBIT 2</span>
           <div class="post-figure-svg">
-            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="exhibit2b-caption">
-  <title id="exhibit2b-caption">Flow diagram showing legacy PMS wrapped by a service boundary, publishing to a message bus consumed by pricing, loyalty and guest data platform</title>
-  <rect width="800" height="500" fill="#F7F6F2"/>
-  <text x="40" y="36" font-family="Inter Tight, sans-serif" font-size="13" font-weight="600" fill="#7A7974" letter-spacing="1.5">EXHIBIT 2</text>
-  <text x="40" y="62" font-family="Inter Tight, sans-serif" font-size="19" font-weight="700" fill="#28251D">Contain the old system, free the new ones</text>
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mod2-title mod2-desc" font-family="Inter Tight, sans-serif">
+  <title id="mod2-title">Boundary architecture</title>
+  <desc id="mod2-desc">Legacy PMS in the centre, wrapped by a boundary service. Change data capture feeds a message bus. Three new systems (Pricing, Loyalty, Guest data platform) read from the bus and write back only through the boundary service.</desc>
 
-  <g font-family="Inter Tight, sans-serif">
-    <rect x="330" y="100" width="140" height="70" fill="#28251D"/>
-    <text x="400" y="130" font-size="13" font-weight="700" fill="#F7F6F2" text-anchor="middle">LEGACY PMS</text>
-    <text x="400" y="150" font-size="10" fill="#F7F6F2" text-anchor="middle" opacity="0.8">unchanged since 2011</text>
+  <rect x="0" y="0" width="800" height="500" fill="#F7F6F2"/>
 
-    <rect x="290" y="190" width="220" height="46" fill="none" stroke="#0C4E54" stroke-width="2" stroke-dasharray="5 4"/>
-    <text x="400" y="216" font-size="11" font-weight="700" fill="#0C4E54" text-anchor="middle">SERVICE BOUNDARY (CDC)</text>
+  <!-- FIG + title -->
+  <text x="40" y="42" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A7974" letter-spacing="0.06em">FIG 4.2</text>
+  <text x="40" y="68" font-size="18" font-weight="600" fill="#28251D">Boundary architecture</text>
+  <line x1="40" y1="84" x2="760" y2="84" stroke="#D4D1CA"/>
 
-    <line x1="400" y1="170" x2="400" y2="190" stroke="#28251D" stroke-width="2"/>
-    <line x1="400" y1="236" x2="400" y2="270" stroke="#28251D" stroke-width="2"/>
+  <!-- LEGACY PMS (centre-left) -->
+  <rect x="80" y="200" width="180" height="90" rx="3" fill="#F0EEE8" stroke="#7A7974" stroke-dasharray="4 3"/>
+  <text x="170" y="230" font-size="13" font-weight="600" fill="#28251D" text-anchor="middle">Legacy PMS / CRS</text>
+  <text x="170" y="250" font-size="11" fill="#7A7974" text-anchor="middle">Untouched inside</text>
+  <text x="170" y="270" font-family="JetBrains Mono, monospace" font-size="10" fill="#7A7974" text-anchor="middle">Opera · Sabre · Amadeus</text>
 
-    <rect x="230" y="270" width="340" height="40" fill="#01696F"/>
-    <text x="400" y="295" font-size="12" font-weight="700" fill="#F7F6F2" text-anchor="middle">MESSAGE BUS (Kafka)</text>
+  <!-- Boundary service (wrapping) -->
+  <rect x="60" y="180" width="220" height="130" rx="3" fill="none" stroke="#01696F" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="170" y="172" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#01696F" letter-spacing="0.06em" text-anchor="middle">BOUNDARY SERVICE</text>
 
-    <line x1="290" y1="330" x2="290" y2="310" stroke="#28251D" stroke-width="1.5"/>
-    <line x1="400" y1="330" x2="400" y2="310" stroke="#28251D" stroke-width="1.5"/>
-    <line x1="510" y1="330" x2="510" y2="310" stroke="#28251D" stroke-width="1.5"/>
+  <!-- Change Data Capture flow arrow -->
+  <line x1="285" y1="245" x2="360" y2="245" stroke="#28251D" stroke-width="1.5"/>
+  <polygon points="360,245 352,241 352,249" fill="#28251D"/>
+  <text x="322" y="235" font-family="JetBrains Mono, monospace" font-size="10" fill="#01696F" text-anchor="middle">CDC</text>
 
-    <rect x="200" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5"/>
-    <text x="290" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">PRICING ENGINE</text>
-    <text x="290" y="374" font-size="10" fill="#7A7974" text-anchor="middle">reads bus, writes via service</text>
+  <!-- Message bus (long vertical bar) -->
+  <rect x="360" y="140" width="80" height="210" rx="3" fill="#0C4E54"/>
+  <text x="400" y="170" font-size="12" font-weight="600" fill="#F7F6F2" text-anchor="middle">Message</text>
+  <text x="400" y="188" font-size="12" font-weight="600" fill="#F7F6F2" text-anchor="middle">bus</text>
+  <text x="400" y="210" font-family="JetBrains Mono, monospace" font-size="9" fill="#9DF5F5" text-anchor="middle">events</text>
+  <line x1="370" y1="225" x2="430" y2="225" stroke="#9DF5F5" stroke-opacity="0.35"/>
+  <text x="400" y="250" font-family="JetBrains Mono, monospace" font-size="9" fill="#9DF5F5" text-anchor="middle">rate</text>
+  <text x="400" y="270" font-family="JetBrains Mono, monospace" font-size="9" fill="#9DF5F5" text-anchor="middle">reservation</text>
+  <text x="400" y="290" font-family="JetBrains Mono, monospace" font-size="9" fill="#9DF5F5" text-anchor="middle">stay</text>
+  <text x="400" y="310" font-family="JetBrains Mono, monospace" font-size="9" fill="#9DF5F5" text-anchor="middle">loyalty</text>
 
-    <rect x="400" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5" transform="translate(-90,0)"/>
-    <text x="400" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">LOYALTY LEDGER</text>
-    <text x="400" y="374" font-size="10" fill="#7A7974" text-anchor="middle">credits from bus events</text>
+  <!-- Three consumers on right, stacked vertically -->
+  <!-- Pricing -->
+  <rect x="510" y="140" width="220" height="56" rx="3" fill="#FFFFFF" stroke="#D4D1CA"/>
+  <text x="525" y="164" font-size="13" font-weight="600" fill="#28251D">Pricing engine</text>
+  <text x="525" y="182" font-size="10" fill="#7A7974">Reads bus, writes via boundary</text>
 
-    <rect x="420" y="330" width="180" height="60" fill="#F7F6F2" stroke="#28251D" stroke-width="1.5"/>
-    <text x="510" y="356" font-size="12" font-weight="700" fill="#28251D" text-anchor="middle">GUEST DATA PLATFORM</text>
-    <text x="510" y="374" font-size="10" fill="#7A7974" text-anchor="middle">builds profile from bus</text>
+  <!-- Loyalty -->
+  <rect x="510" y="217" width="220" height="56" rx="3" fill="#FFFFFF" stroke="#D4D1CA"/>
+  <text x="525" y="241" font-size="13" font-weight="600" fill="#28251D">Loyalty service</text>
+  <text x="525" y="259" font-size="10" fill="#7A7974">Reads bus, credits via boundary</text>
 
-    <path d="M310 350 L310 380 L470 380 L470 350" fill="none" stroke="#28251D" stroke-width="1.5"/>
-    <line x1="380" y1="370" x2="420" y2="370" stroke="#28251D" stroke-width="1.5"/>
+  <!-- Guest data platform -->
+  <rect x="510" y="294" width="220" height="56" rx="3" fill="#FFFFFF" stroke="#D4D1CA"/>
+  <text x="525" y="318" font-size="13" font-weight="600" fill="#28251D">Guest data platform</text>
+  <text x="525" y="336" font-size="10" fill="#7A7974">Reads bus only, no writes</text>
 
-    <text x="400" y="420" font-size="11" fill="#7A7974" text-anchor="middle">Every read is a contract. Every write is a queue. Every side effect is a documented event.</text>
-  </g>
+  <!-- Arrows from bus to each consumer -->
+  <line x1="440" y1="168" x2="500" y2="168" stroke="#28251D" stroke-width="1"/>
+  <polygon points="500,168 492,164 492,172" fill="#28251D"/>
+  <line x1="440" y1="245" x2="500" y2="245" stroke="#28251D" stroke-width="1"/>
+  <polygon points="500,245 492,241 492,249" fill="#28251D"/>
+  <line x1="440" y1="322" x2="500" y2="322" stroke="#28251D" stroke-width="1"/>
+  <polygon points="500,322 492,318 492,326" fill="#28251D"/>
 
-  <text x="40" y="470" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 2026.</text>
+  <!-- Return path (write-back) — one arrow from pricing & loyalty back through bus to boundary -->
+  <path d="M 510 168 Q 480 100 260 130" fill="none" stroke="#01696F" stroke-width="1" stroke-dasharray="3 3"/>
+  <polygon points="260,130 270,127 267,135" fill="#01696F"/>
+  <text x="390" y="112" font-family="JetBrains Mono, monospace" font-size="9" fill="#01696F">writes only cross the boundary service</text>
+
+  <!-- rule + note -->
+  <line x1="40" y1="410" x2="760" y2="410" stroke="#D4D1CA"/>
+  <text x="40" y="432" font-size="11" font-style="italic" fill="#7A7974">The legacy system's data flows out via change data capture. Writes only re-enter through the boundary service.</text>
+  <text x="40" y="452" font-size="11" font-style="italic" fill="#7A7974">New systems evolve at their own pace. Legacy is retired when it stops being read, not when it is replaced.</text>
 </svg>
           </div>
           <figcaption>
@@ -243,7 +290,7 @@
           </figcaption>
         </figure>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s05-where-the-mid-office-and-the-dcs-fit-in">
           <span class="post-section-num">05</span>
           <h2 class="post-h2">Where the mid-office and the DCS fit in</h2>
           <p>Two systems in the travel estate get skipped in most modernisation conversations because nobody enjoys discussing them, and both are exactly where boundary and contain earns its keep. The mid-office, the reconciliation layer between booking systems and the general ledger, is usually the single most brittle piece of software in the stack, built to paper over differences between however many booking sources feed into it, each changed at least once since the mid-office was written. Wrapping it in a boundary, with every reconciliation input arriving as a well-defined event rather than a nightly file drop nobody documented, does more to reduce operational risk than almost any other single move available.</p>
@@ -252,7 +299,7 @@
           <p>The pattern generalises past travel but is unusually well suited to it, because the industry's core systems of record, GDS hosts, PMS platforms, DCS software, were mostly built assuming a stable, slow-changing world of a small number of large suppliers, an assumption that has not held for fifteen years. Boundary and contain accepts the old systems will keep being slow and stable, and builds the fast-changing parts of the business somewhere else, connected only by a well-defined event contract.</p>
         </section>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s06-the-four-questions-to-ask-before-the-next-modernisation-slide">
           <span class="post-section-num">06</span>
           <h2 class="post-h2">The four questions to ask before the next modernisation slide</h2>
           <p>First, what is the smallest change to the legacy system's interface that lets every new system stop caring about its internals. If the answer involves a queue, a documented event schema, and a service that owns the boundary, you have a workable plan. If it is a multi-year migration with a single go-live date, you have a slide, not a plan.</p>
@@ -261,7 +308,7 @@
           <p>Fourth, does finance understand this is a sequence of investments, not one, and has the budgeting process been adapted to fund it that way. If the only way to get this funded is as a single large capitalised programme, the funding model will eventually push the team back towards rip and replace, regardless of what the architecture review recommended.</p>
         </section>
 
-        <section class="post-section reveal">
+        <section class="post-section reveal" id="s07-what-this-looks-like-in-practice">
           <span class="post-section-num">07</span>
           <h2 class="post-h2">What this looks like in practice</h2>
           <p>A regional airline group came to us with a familiar mandate from a new chief executive: modernise the passenger service system estate within two years. Their PSS, hosted in partnership with one of the major GDS providers, ran reservations, inventory, and departure control across three sub-brands acquired over the previous decade, each with slightly different fare structures and none with documentation anyone still at the company had written. The original plan, inherited from the previous administration, was a full PSS migration to a newer hosted platform, budgeted at just under three years and a nine-figure sum.</p>
@@ -278,6 +325,7 @@
         <a href="/insights" class="btn btn--ghost">More insights</a>
       </div>
     </section>
+    </div>
   </div>
 
   <section class="section section--soft related-section">
@@ -331,7 +379,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="../../assets/techspian-logo-footer.svg?v=1783600040" alt="Techspian">
+        <img src="../../assets/techspian-logo-footer.svg?v=1783669472" alt="Techspian">
         <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
         <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
       </div>
@@ -371,6 +419,6 @@
     </div>
   </div>
 </footer>
-<script src="../../app.js?v=1783600040"></script>
+<script src="../../app.js?v=1783669472"></script>
 </body>
 </html>
