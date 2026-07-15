@@ -504,6 +504,26 @@
       stage.classList.add('is-engaged');
     }
 
+    // Prev/next arrows for manual navigation alongside the auto-advance
+    var prevBtn = document.createElement('button');
+    prevBtn.type = 'button'; prevBtn.className = 'ed-arrow ed-arrow--prev';
+    prevBtn.setAttribute('aria-label', 'Previous slide');
+    prevBtn.innerHTML = '&#8249;';
+    var nextBtn = document.createElement('button');
+    nextBtn.type = 'button'; nextBtn.className = 'ed-arrow ed-arrow--next';
+    nextBtn.setAttribute('aria-label', 'Next slide');
+    nextBtn.innerHTML = '&#8250;';
+    prevBtn.addEventListener('click', function(){
+      paint((cur - 1 + total) % total);
+      if(playing) startTimer();
+    });
+    nextBtn.addEventListener('click', function(){
+      paint((cur + 1) % total);
+      if(playing) startTimer();
+    });
+    host.appendChild(prevBtn);
+    host.appendChild(nextBtn);
+
     grid.parentNode.replaceChild(stage, grid);
 
     // Tell CSS how long each slide is held so the timing bar matches
@@ -554,6 +574,10 @@
     host.addEventListener('mouseleave', function(){ play(); });
     dotsWrap.addEventListener('focusin', pause);
     dotsWrap.addEventListener('focusout', function(){ play(); });
+    prevBtn.addEventListener('focus', pause);
+    nextBtn.addEventListener('focus', pause);
+    prevBtn.addEventListener('blur', function(){ play(); });
+    nextBtn.addEventListener('blur', function(){ play(); });
     document.addEventListener('visibilitychange', function(){
       if(document.hidden){ pause(); }
       else {
