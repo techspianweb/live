@@ -950,6 +950,28 @@
 .ed-host--ink .ed-dot.is-on::before{background:var(--color-lime)}
 .ed-stage.is-engaged .ed-progress__hint{opacity:0;pointer-events:none}
 .ed-pdot{display:none} /* legacy dots hidden, rail replaces them */
+
+/* Manual prev/next arrows, alongside the auto-advance */
+.ed-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;z-index:5;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(14,14,16,.06);color:var(--color-ink);
+  border:1px solid rgba(14,14,16,.14);
+  font-size:22px;line-height:1;padding:0;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);
+}
+.ed-arrow:hover{background:var(--color-ink);color:#fff;border-color:var(--color-ink)}
+.ed-arrow:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(58,165,210,.6)}
+.ed-arrow--prev{left:16px}
+.ed-arrow--next{right:16px}
+.ed-host--ink .ed-arrow{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.18)}
+.ed-host--ink .ed-arrow:hover{background:var(--color-lime);color:var(--color-ink);border-color:var(--color-lime)}
+@media (max-width:860px){
+  .ed-arrow{width:36px;height:36px;font-size:18px}
+  .ed-arrow--prev{left:8px}
+  .ed-arrow--next{right:8px}
+}
 .ed-item{
   transition:opacity .42s cubic-bezier(.2,.7,.2,1), transform .42s cubic-bezier(.2,.7,.2,1), filter .42s cubic-bezier(.2,.7,.2,1);
   will-change:opacity,transform;
