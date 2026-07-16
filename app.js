@@ -521,8 +521,37 @@
       paint((cur + 1) % total);
       if(playing) startTimer();
     });
-    host.appendChild(prevBtn);
-    host.appendChild(nextBtn);
+    // Anchor to the media box (not the whole host) so they stay centered on
+    // the image even on mobile, where text stacks below the image in the
+    // same host and would otherwise throw off a host-relative 50% center.
+    if(hasImg){
+      media.appendChild(prevBtn);
+      media.appendChild(nextBtn);
+    } else {
+      host.appendChild(prevBtn);
+      host.appendChild(nextBtn);
+    }
+
+    // Touch swipe — the natural way to step through slides on mobile,
+    // where tapping a small 36px arrow is a less obvious target.
+    var touchX = null, touchY = null;
+    host.addEventListener('touchstart', function(e){
+      if(e.touches.length !== 1) return;
+      touchX = e.touches[0].clientX;
+      touchY = e.touches[0].clientY;
+    }, {passive:true});
+    host.addEventListener('touchend', function(e){
+      if(touchX === null) return;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - touchX;
+      var dy = t.clientY - touchY;
+      touchX = null;
+      // Ignore short drags and mostly-vertical swipes, so normal page
+      // scrolling on the card is never hijacked.
+      if(Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      paint(dx < 0 ? (cur + 1) % total : (cur - 1 + total) % total);
+      if(playing) startTimer();
+    }, {passive:true});
 
     grid.parentNode.replaceChild(stage, grid);
 
