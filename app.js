@@ -651,3 +651,44 @@
     }
   });
 })();
+
+/* ====== NAV DROPDOWN (click to open, e.g. Insights > Research & Reports) ====== */
+(function(){
+  var triggers = document.querySelectorAll('.has-dropdown > .dropdown-trigger');
+  if(!triggers.length) return;
+  triggers.forEach(function(btn){
+    var item = btn.closest('.has-dropdown');
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.has-dropdown.is-open').forEach(function(o){
+        if(o !== item){
+          o.classList.remove('is-open');
+          var b = o.querySelector('.dropdown-trigger');
+          if(b) b.setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.has-dropdown')){
+      document.querySelectorAll('.has-dropdown.is-open').forEach(function(o){
+        o.classList.remove('is-open');
+        var b = o.querySelector('.dropdown-trigger');
+        if(b) b.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.has-dropdown.is-open').forEach(function(o){
+        o.classList.remove('is-open');
+        var b = o.querySelector('.dropdown-trigger');
+        if(b) b.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
