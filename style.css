@@ -262,6 +262,9 @@
   .nav-links .has-dropdown.is-open .nav-dropdown{
     display:block;transform:none;
   }
+  .nav-links .nav-dropdown li{border-bottom:none}
+  .nav-links .nav-dropdown li:first-child{border-top:none}
+  .nav-links .nav-dropdown li + li{border-top:1px solid rgba(255,255,255,.08)}
   .nav-links .nav-dropdown a{
     color:rgba(255,255,255,.65);font-size:1.05rem;font-weight:600;
     padding:10px 4px;border-bottom:none;
