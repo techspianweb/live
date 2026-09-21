@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none';">
+<title>OTA Booking Engine: Architecture, Components & Data Flow</title>
+<meta name="description" content="Learn how an OTA booking engine works, from search and supplier APIs to pricing, booking, payment and confirmation. Explore the architecture and key components.">
+<meta name="keywords" content="OTA booking engine, OTA booking engine architecture, OTA booking engine components, how an OTA booking engine works, travel booking engine, OTA platform architecture, booking engine data flow, GDS integration, NDC integration, travel API integration, OTA replatforming">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Techspian editorial desk">
+<link rel="canonical" href="https://techspian.com/insights/ota-booking-engine-architecture">
+<meta property="og:site_name" content="Techspian">
+<meta property="og:title" content="OTA Booking Engine: Architecture, Components & Data Flow">
+<meta property="og:description" content="Learn how an OTA booking engine works, from search and supplier APIs to pricing, booking, payment and confirmation. Explore the architecture and key components.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://techspian.com/insights/ota-booking-engine-architecture">
+<meta property="og:image" content="https://techspian.com/assets/insights/hero-ota-booking-engine.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OTA Booking Engine: Architecture, Components & Data Flow">
+<meta name="twitter:description" content="Learn how an OTA booking engine works, from search and supplier APIs to pricing, booking, payment and confirmation. Explore the architecture and key components.">
+<meta name="twitter:image" content="https://techspian.com/assets/insights/hero-ota-booking-engine.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png?v=1783675450">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon-180.png?v=1783675450">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../base.css?v=1783675450">
+<link rel="stylesheet" href="../../style.css?v=1783675450">
+<link rel="stylesheet" href="../../insights.css?v=1783675450">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What is an OTA booking engine? Architecture, components, and data flow.", "description": "Learn how an OTA booking engine works, from search and supplier APIs to pricing, booking, payment and confirmation. Explore the architecture and key components.", "image": "https://techspian.com/assets/insights/hero-ota-booking-engine.png", "datePublished": "2026-09-09", "dateModified": "2026-09-09", "author": {"@type": "Organization", "name": "Techspian", "url": "https://techspian.com"}, "publisher": {"@type": "Organization", "name": "Techspian", "logo": {"@type": "ImageObject", "url": "https://techspian.com/assets/techspian-logo-full.png"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://techspian.com/insights/ota-booking-engine-architecture"}, "articleSection": "Platform & Cloud", "keywords": "OTA booking engine, OTA booking engine architecture, OTA booking engine components, how an OTA booking engine works, travel booking engine, OTA platform architecture, booking engine data flow, GDS integration, NDC integration, travel API integration, OTA replatforming"}</script>
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="../../" class="brand" aria-label="Techspian home">
+        <img src="../../assets/techspian-logo-nav.svg?v=1783675450" alt="Techspian">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../../capabilities">What We Do</a></li>
+        <li><a href="../../industries">Verticals</a></li>
+        <li><a href="../../travel-commerce">Travel Commerce</a></li>
+        <li><a href="../../work">Our Work</a></li>
+        <li><a href="../../approach">Approach</a></li>
+        <li><a href="../../about">About</a></li>
+        <li class="has-dropdown"><a href="../../insights" class="is-active">Insights</a><button type="button" class="dropdown-trigger" aria-expanded="false" aria-label="Show Insights submenu"><span class="dropdown-chev" aria-hidden="true"></span></button><ul class="nav-dropdown"><li><a href="../../insights">All Insights</a></li><li><a href="../../insights/research">Research &amp; Reports</a></li></ul></li>
+      </ul>
+      <a href="../../contact" class="nav-cta">Strategy call</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<article class="post">
+
+  <div class="post-hero" aria-hidden="true">
+    <img src="../../assets/insights/hero-ota-booking-engine.png?v=1783675450" alt="" loading="eager">
+  </div>
+
+  <div class="wrap post-head">
+    <div class="post-meta">
+      <a href="/insights" class="post-back">← All insights</a>
+      <span class="post-pillar">Platform &amp; Cloud</span>
+      <span class="post-dot">·</span>
+      <span class="post-date">9 September 2026</span>
+      <span class="post-dot">·</span>
+      <span class="post-time">10 min read</span>
+    </div>
+    <h1 class="h-hero post-title">What is an OTA booking engine? Architecture, components, and data flow.</h1>
+    <div class="post-lead">
+      <p class="post-lead-para">An OTA booking engine is the technology that connects travelers with flights, hotels, and other travel products from multiple suppliers. It collects availability and pricing, standardizes the data arriving from very different sources, applies the business rules a travel seller depends on, and takes the traveler from an initial search through payment to a confirmed itinerary.</p>
+<p class="post-lead-para">This guide walks through how an OTA booking engine actually works: what it is, how it differs from the broader OTA platform around it, the components that do the work, how data moves from search to confirmation, and what separates a booking engine built to last from one that will need rebuilding within a few years.</p>
+
+    </div>
+  </div>
+
+  <div class="wrap post-body">
+
+      <nav class="post-toc" aria-label="Article contents">
+        <details class="post-toc-details" open>
+          <summary>
+            <span class="post-toc-eyebrow">In this piece</span>
+            <span class="post-toc-summary-arrow" aria-hidden="true">›</span>
+          </summary>
+          <ol class="post-toc-list">
+            <li><a href="#s01-what-is-an-ota-booking-engine"><span class="toc-num">01</span><span class="toc-label">What is an OTA booking engine?</span></a></li>
+          <li><a href="#s02-ota-booking-engine-vs-ota-platform"><span class="toc-num">02</span><span class="toc-label">OTA booking engine vs. OTA platform</span></a></li>
+          <li><a href="#s03-how-does-an-ota-booking-engine-work"><span class="toc-num">03</span><span class="toc-label">How does an OTA booking engine work?</span></a></li>
+          <li><a href="#s04-key-components-of-an-ota-booking-engine"><span class="toc-num">04</span><span class="toc-label">Key components of an OTA booking engine</span></a></li>
+          <li><a href="#s05-ota-booking-engine-data-flow"><span class="toc-num">05</span><span class="toc-label">OTA booking engine data flow</span></a></li>
+          <li><a href="#s06-why-ota-booking-engine-architecture-matters"><span class="toc-num">06</span><span class="toc-label">Why OTA booking engine architecture matters</span></a></li>
+          <li><a href="#s07-common-ota-booking-engine-mistakes"><span class="toc-num">07</span><span class="toc-label">Common OTA booking engine mistakes</span></a></li>
+          <li><a href="#s08-what-a-modern-ota-booking-engine-should-look-like"><span class="toc-num">08</span><span class="toc-label">What a modern OTA booking engine should look like</span></a></li>
+          <li><a href="#s09-build-vs-buy-an-ota-booking-engine"><span class="toc-num">09</span><span class="toc-label">Build vs. buy an OTA booking engine</span></a></li>
+          <li><a href="#s10-the-future-of-ota-booking-engines"><span class="toc-num">10</span><span class="toc-label">The future of OTA booking engines</span></a></li>
+          <li><a href="#s11-conclusion"><span class="toc-num">11</span><span class="toc-label">Conclusion</span></a></li>
+          </ol>
+        </details>
+      </nav>
+
+    <div class="post-body-inner">
+
+        <section class="post-section reveal" id="s01-what-is-an-ota-booking-engine">
+          <span class="post-section-num">01</span>
+          <h2 class="post-h2">What is an OTA booking engine?</h2>
+          <p>An OTA (online travel agency) booking engine manages the core booking journey: search, availability, pricing, selection, payment, booking, and confirmation. It is the transactional heart of the platform, the system a traveler is actually interacting with every time they search a route, compare fares, or hit "book now."</p>
+          <p>To do that job, it typically connects to:</p>
+          <ul>
+            <li>GDS platforms</li>
+            <li>NDC airline connections</li>
+            <li>Direct airline and hotel APIs</li>
+            <li>Hotel aggregators and bed banks</li>
+            <li>Payment providers</li>
+            <li>Loyalty and customer systems</li>
+          </ul>
+          <p>The booking engine sits between the customer experience and the travel suppliers behind it. It hides supplier-specific complexity, so a search result that blends a GDS fare, an NDC offer, and a direct hotel-API rate looks like a single, consistent list to the traveler, and gives them a consistent booking experience regardless of which supplier is actually fulfilling the request underneath.</p>
+        </section>
+
+        <section class="post-section reveal" id="s02-ota-booking-engine-vs-ota-platform">
+          <span class="post-section-num">02</span>
+          <h2 class="post-h2">OTA booking engine vs. OTA platform</h2>
+          <p>It is easy to use "booking engine" and "OTA platform" interchangeably, but they describe different scopes of the same business. An OTA platform is the broader technology ecosystem supporting an online travel agency. Depending on the business, it can include customer accounts, search, booking, payments, loyalty, analytics, content management, customer support, and day-to-day operations tooling.</p>
+          <p>The booking engine is the transaction-focused part of that platform, the narrower slice of the system responsible for turning intent into a confirmed reservation: Search → Availability → Selection → Pricing → Booking → Payment → Confirmation. Everything else, marketing pages, loyalty dashboards, support ticketing, sits around that core, but the booking engine is what actually has to work, every time, for the business to take a payment at all.</p>
+        </section>
+
+        <section class="post-section reveal" id="s03-how-does-an-ota-booking-engine-work">
+          <span class="post-section-num">03</span>
+          <h2 class="post-h2">How does an OTA booking engine work?</h2>
+          <p>A typical booking engine follows a recognizable path from the moment a traveler opens the search box to the moment a confirmation lands in their inbox: Traveler → Web/mobile experience → API layer → Search → Supplier connectivity → Data normalization → Pricing → Revalidation → Payment → Booking → Confirmation → Servicing.</p>
+          <p>Each arrow in that chain looks simple on a whiteboard. In production, the complexity comes from coordinating multiple suppliers with different formats, different prices that can change mid-session, different availability windows, payment flows that do not always resolve cleanly, and the long tail of failure scenarios that only show up at scale: a supplier timing out, a fare going stale between search and checkout, a payment succeeding while a booking call fails. A booking engine's architecture is, in large part, a bet on how gracefully it handles exactly these situations.</p>
+        </section>
+
+        <figure class="post-figure reveal">
+          <span class="post-figure-eyebrow">EXHIBIT 1</span>
+          <div class="post-figure-svg">
+            <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ota1-title ota1-desc" font-family="Inter Tight, sans-serif">
+  <title id="ota1-title">The booking engine flow, grouped into four phases</title>
+  <desc id="ota1-desc">A four-layer stack from demand capture at the base up to confirmation and servicing at the top, each layer described briefly.</desc>
+  <rect width="800" height="460" fill="#F7F6F2"/>
+  <text x="40" y="42" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A7974" letter-spacing="0.06em">FIG 3.1</text>
+  <text x="40" y="68" font-size="18" font-weight="600" fill="#28251D">One flow, four phases</text>
+  <line x1="40" y1="84" x2="760" y2="84" stroke="#D4D1CA"/>
+
+  <g font-family="Inter Tight, sans-serif">
+    <rect x="120" y="105" width="560" height="70" fill="#28251D" opacity="0.85"/>
+    <text x="145" y="135" font-size="14" font-weight="700" fill="#F7F6F2">CONFIRMATION &amp; SERVICING</text>
+    <text x="145" y="158" font-size="12" fill="#F7F6F2" opacity="0.9">Confirmation, then cancellations, changes, and refunds after the booking is made.</text>
+
+    <rect x="120" y="180" width="560" height="70" fill="#0C4E54"/>
+    <text x="145" y="210" font-size="14" font-weight="700" fill="#F7F6F2">TRANSACTION</text>
+    <text x="145" y="233" font-size="12" fill="#F7F6F2" opacity="0.9">Revalidation, payment, and the booking call to the supplier.</text>
+
+    <rect x="120" y="255" width="560" height="70" fill="#01696F" opacity="0.9"/>
+    <text x="145" y="285" font-size="14" font-weight="700" fill="#F7F6F2">SUPPLY &amp; PRICING</text>
+    <text x="145" y="308" font-size="12" fill="#F7F6F2" opacity="0.9">Search, supplier connectivity, normalization, and pricing rules.</text>
+
+    <rect x="120" y="330" width="560" height="70" fill="#01696F"/>
+    <text x="145" y="360" font-size="14" font-weight="700" fill="#F7F6F2">DEMAND CAPTURE</text>
+    <text x="145" y="383" font-size="12" fill="#F7F6F2" opacity="0.9">Traveler, web/mobile/AI interface, and the API gateway.</text>
+  </g>
+
+  <text x="40" y="425" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 2026. Every booking climbs this stack once, in order. Skipping a layer is how bookings fail.</text>
+</svg>
+          </div>
+          <figcaption>
+            <span class="post-figure-caption">A booking engine's job reduces to four phases stacked on top of each other: capture demand, price and match supply, execute the transaction, then confirm and service it.</span>
+            <span class="post-figure-source">Techspian analysis, 2026.</span>
+          </figcaption>
+        </figure>
+
+        <section class="post-section reveal" id="s04-key-components-of-an-ota-booking-engine">
+          <span class="post-section-num">04</span>
+          <h2 class="post-h2">Key components of an OTA booking engine</h2>
+          <p>Underneath that flow sit the components that actually do the work. None of them are optional in a production system, though how much engineering effort each one gets is where booking engines start to differ from each other.</p>
+
+          <h3 class="post-h3">Customer Experience Layer</h3>
+          <p>The web, mobile, B2B, white-label, or AI interface where users search, compare, pay, and manage bookings. It is the only layer most travelers ever see, which is exactly why it gets rebuilt long before anyone touches what is underneath it.</p>
+
+          <h3 class="post-h3">API Gateway and Orchestration Layer</h3>
+          <p>Routes requests between the customer experience and the backend services doing the actual work. It typically handles authentication, routing, rate limiting, logging, and error handling, the plumbing that keeps every other component from having to solve those problems itself.</p>
+
+          <h3 class="post-h3">Search and Availability Engine</h3>
+          <p>Converts a traveler's search into supplier requests and combines the responses into a single result set. Search speed and supplier-call efficiency directly affect both infrastructure cost and conversion; a slow or overly literal search engine loses bookings before a traveler ever reaches checkout.</p>
+
+          <h3 class="post-h3">Supplier Connectivity Layer</h3>
+          <p>Connects the OTA to GDS platforms, NDC connections, direct airline APIs, hotel APIs, aggregators, and other suppliers. This is the layer that absorbs the most operational risk, because every supplier it touches can change its API, its uptime, or its terms with little warning.</p>
+
+          <h3 class="post-h3">Data Normalization and Mapping</h3>
+          <p>Converts the different formats each supplier returns into one consistent internal model, covering properties, rooms, fares, amenities, policies, currencies, and taxes. Without this layer, every downstream component would need to understand every supplier's data shape individually, which does not scale past a handful of integrations.</p>
+
+          <h3 class="post-h3">Caching Layer</h3>
+          <p>Stores information that does not always require a real-time supplier call, useful for search results and static content, but risky for anything time-sensitive. Dynamic availability and final prices should always be revalidated before booking rather than trusted from cache.</p>
+
+          <h3 class="post-h3">Pricing and Business Rules Engine</h3>
+          <p>Applies markups, commissions, discounts, taxes, currency conversion, promotions, customer-specific pricing, and loyalty rules on top of whatever the supplier returned. This is usually where an OTA's actual commercial strategy lives in code, and where the margin on every booking gets decided.</p>
+
+          <h3 class="post-h3">Basket and Itinerary Management</h3>
+          <p>Maintains the selected product, traveler details, price, and session state while the customer completes the booking, holding everything together across what can be a multi-step, multi-minute checkout flow.</p>
+
+          <h3 class="post-h3">Booking and Order Management</h3>
+          <p>Creates the reservation, stores supplier references such as PNRs or confirmation numbers, and maintains the OTA's own internal record of the booking, independent of whatever the supplier's system shows.</p>
+
+          <h3 class="post-h3">Payment Layer</h3>
+          <p>Processes payment, authentication, refunds, and related payment operations. The system needs a defined recovery path for the case where payment succeeds but the supplier booking call fails, or the reverse, because that mismatch is where a lot of customer-facing chaos originates.</p>
+
+          <h3 class="post-h3">Post-Booking Servicing</h3>
+          <p>Handles cancellations, changes, refunds, rebooking, vouchers, and customer support after the confirmation email goes out. It is the component most often built last, and the one travelers judge a business by most when something goes wrong.</p>
+        </section>
+
+        <figure class="post-figure reveal">
+          <span class="post-figure-eyebrow">EXHIBIT 2</span>
+          <div class="post-figure-svg">
+            <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ota2-title ota2-desc" font-family="Inter Tight, sans-serif">
+  <title id="ota2-title">Ten components, grouped into five functional layers</title>
+  <desc id="ota2-desc">Five horizontal bars grouping the booking engine's ten components by function, from customer experience down to transaction and servicing, each with a one-line description.</desc>
+  <rect width="800" height="560" fill="#F7F6F2"/>
+  <text x="40" y="42" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A7974" letter-spacing="0.06em">FIG 4.1</text>
+  <text x="40" y="68" font-size="18" font-weight="600" fill="#28251D">Ten components, five functional layers</text>
+  <line x1="40" y1="84" x2="760" y2="84" stroke="#D4D1CA"/>
+
+  <g font-family="Inter Tight, sans-serif">
+    <rect x="40" y="105" width="720" height="80" fill="#0C4E54"/>
+    <text x="64" y="135" font-size="14" font-weight="700" fill="#F7F6F2">CUSTOMER EXPERIENCE LAYER</text>
+    <text x="64" y="158" font-size="12" fill="#F7F6F2" opacity="0.9">Web, mobile, B2B, white-label, and AI interfaces where travelers search and book.</text>
+
+    <rect x="40" y="190" width="720" height="80" fill="#01696F"/>
+    <text x="64" y="220" font-size="14" font-weight="700" fill="#F7F6F2">ORCHESTRATION &amp; DISCOVERY</text>
+    <text x="64" y="243" font-size="12" fill="#F7F6F2" opacity="0.9">API gateway and orchestration, plus the search and availability engine.</text>
+
+    <rect x="40" y="275" width="720" height="80" fill="#01696F" opacity="0.8"/>
+    <text x="64" y="305" font-size="14" font-weight="700" fill="#F7F6F2">SUPPLIER &amp; DATA LAYER</text>
+    <text x="64" y="328" font-size="12" fill="#F7F6F2" opacity="0.9">Supplier connectivity, data normalization and mapping, and the caching layer.</text>
+
+    <rect x="40" y="360" width="720" height="80" fill="#A84B2F"/>
+    <text x="64" y="390" font-size="14" font-weight="700" fill="#F7F6F2">COMMERCIAL LAYER</text>
+    <text x="64" y="413" font-size="12" fill="#F7F6F2" opacity="0.9">Pricing and business rules, plus basket and itinerary management.</text>
+
+    <rect x="40" y="445" width="720" height="80" fill="#28251D" opacity="0.85"/>
+    <text x="64" y="475" font-size="14" font-weight="700" fill="#F7F6F2">TRANSACTION &amp; SERVICING</text>
+    <text x="64" y="498" font-size="12" fill="#F7F6F2" opacity="0.9">Booking and order management, the payment layer, and post-booking servicing.</text>
+  </g>
+
+  <text x="40" y="545" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 2026. Each layer can be owned by a different team; none of them can fail without the others noticing.</text>
+</svg>
+          </div>
+          <figcaption>
+            <span class="post-figure-caption">The ten components a booking engine needs collapse into five functional layers, from what the traveler sees down to what settles the transaction and services it afterward.</span>
+            <span class="post-figure-source">Techspian analysis, 2026.</span>
+          </figcaption>
+        </figure>
+
+        <section class="post-section reveal" id="s05-ota-booking-engine-data-flow">
+          <span class="post-section-num">05</span>
+          <h2 class="post-h2">OTA booking engine data flow</h2>
+          <p>Walking through the components individually is useful, but the real test of an architecture is what happens when a single search turns into a single booking. Here is that path, step by step:</p>
+          <ol>
+            <li><strong>Search:</strong> the traveler enters a destination, dates, number of travelers, and other criteria.</li>
+            <li><strong>Request routing:</strong> the API layer validates the request and sends it on to the relevant search services.</li>
+            <li><strong>Supplier queries:</strong> the system selects which suppliers are relevant and sends them requests.</li>
+            <li><strong>Inventory response:</strong> GDS platforms, NDC connections, direct APIs, and aggregators return availability, content, and pricing.</li>
+            <li><strong>Normalization:</strong> supplier responses, each in their own format, are converted into one common internal model.</li>
+            <li><strong>Pricing:</strong> markups, taxes, promotions, commissions, and other business rules are applied.</li>
+            <li><strong>Results:</strong> the priced offers are ranked and displayed to the traveler.</li>
+            <li><strong>Selection and revalidation:</strong> the traveler selects an offer, and the system checks that price and availability are still current.</li>
+            <li><strong>Payment:</strong> the traveler completes payment.</li>
+            <li><strong>Booking:</strong> the OTA sends the booking request to the supplier and receives a confirmation back.</li>
+            <li><strong>Confirmation:</strong> the OTA stores the completed transaction and sends the traveler their itinerary or confirmation.</li>
+          </ol>
+        </section>
+
+        <figure class="post-figure reveal">
+          <span class="post-figure-eyebrow">EXHIBIT 3</span>
+          <div class="post-figure-svg">
+            <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ota3-title ota3-desc" font-family="Inter Tight, sans-serif">
+  <title id="ota3-title">The search-to-booking lifecycle in eight steps</title>
+  <desc id="ota3-desc">Eight connected nodes in a row: search, shop, select, revalidate, pay, book, confirm, service, tracing the traveler's path through the booking engine.</desc>
+  <rect width="800" height="300" fill="#F7F6F2"/>
+  <text x="40" y="42" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A7974" letter-spacing="0.06em">FIG 5.1</text>
+  <text x="40" y="68" font-size="18" font-weight="600" fill="#28251D">The search-to-booking lifecycle</text>
+  <line x1="40" y1="84" x2="760" y2="84" stroke="#D4D1CA"/>
+
+  <line x1="80" y1="165" x2="720" y2="165" stroke="#D4D1CA" stroke-width="2"/>
+  <g font-family="Inter Tight, sans-serif" text-anchor="middle">
+    <g>
+      <circle cx="80" cy="165" r="24" fill="#01696F"/>
+      <text x="80" y="171" font-size="13" font-weight="700" fill="#F7F6F2">1</text>
+      <text x="80" y="210" font-size="12" font-weight="600" fill="#28251D">Search</text>
+    </g>
+    <g>
+      <circle cx="171" cy="165" r="24" fill="#01696F"/>
+      <text x="171" y="171" font-size="13" font-weight="700" fill="#F7F6F2">2</text>
+      <text x="171" y="210" font-size="12" font-weight="600" fill="#28251D">Shop</text>
+    </g>
+    <g>
+      <circle cx="262" cy="165" r="24" fill="#01696F"/>
+      <text x="262" y="171" font-size="13" font-weight="700" fill="#F7F6F2">3</text>
+      <text x="262" y="210" font-size="12" font-weight="600" fill="#28251D">Select</text>
+    </g>
+    <g>
+      <circle cx="353" cy="165" r="24" fill="#A84B2F"/>
+      <text x="353" y="171" font-size="13" font-weight="700" fill="#F7F6F2">4</text>
+      <text x="353" y="210" font-size="12" font-weight="600" fill="#28251D">Revalidate</text>
+    </g>
+    <g>
+      <circle cx="444" cy="165" r="24" fill="#0C4E54"/>
+      <text x="444" y="171" font-size="13" font-weight="700" fill="#F7F6F2">5</text>
+      <text x="444" y="210" font-size="12" font-weight="600" fill="#28251D">Pay</text>
+    </g>
+    <g>
+      <circle cx="535" cy="165" r="24" fill="#0C4E54"/>
+      <text x="535" y="171" font-size="13" font-weight="700" fill="#F7F6F2">6</text>
+      <text x="535" y="210" font-size="12" font-weight="600" fill="#28251D">Book</text>
+    </g>
+    <g>
+      <circle cx="626" cy="165" r="24" fill="#0C4E54"/>
+      <text x="626" y="171" font-size="13" font-weight="700" fill="#F7F6F2">7</text>
+      <text x="626" y="210" font-size="12" font-weight="600" fill="#28251D">Confirm</text>
+    </g>
+    <g>
+      <circle cx="720" cy="165" r="24" fill="#28251D"/>
+      <text x="720" y="171" font-size="13" font-weight="700" fill="#F7F6F2">8</text>
+      <text x="720" y="210" font-size="12" font-weight="600" fill="#28251D">Service</text>
+    </g>
+  </g>
+
+  <text x="40" y="270" font-family="Inter Tight, sans-serif" font-size="11" fill="#7A7974">Techspian analysis, 2026. Revalidation is the step most engines skip, and the one most likely to make step six fail.</text>
+</svg>
+          </div>
+          <figcaption>
+            <span class="post-figure-caption">From the traveler's side, the same architecture reads as eight steps: search, shop, select, revalidate, pay, book, confirm, and service.</span>
+            <span class="post-figure-source">Techspian analysis, 2026.</span>
+          </figcaption>
+        </figure>
+
+        <section class="post-section reveal" id="s06-why-ota-booking-engine-architecture-matters">
+          <span class="post-section-num">06</span>
+          <h2 class="post-h2">Why OTA booking engine architecture matters</h2>
+          <p>None of this is purely an engineering concern. Booking-engine architecture shows up directly in the business metrics an OTA is measured on:</p>
+          <ul>
+            <li><strong>Conversion:</strong> faster search, accurate pricing, and reliable booking all reduce the friction that costs a sale.</li>
+            <li><strong>Inventory:</strong> effective supplier connectivity is what expands the amount of bookable content on offer.</li>
+            <li><strong>Margin:</strong> the pricing and merchandising rules built into the engine determine how that inventory actually gets monetized.</li>
+            <li><strong>Reliability:</strong> retries, timeouts, fallbacks, monitoring, and reconciliation are what keep a supplier failure from becoming a customer-facing one.</li>
+            <li><strong>Scalability:</strong> the platform has to hold up under seasonal peaks and sudden spikes in search volume, not just average-day traffic.</li>
+            <li><strong>Future readiness:</strong> an API-first architecture is what makes it possible to support mobile, partner, and AI-powered booking experiences without a rebuild.</li>
+          </ul>
+        </section>
+
+        <section class="post-section reveal" id="s07-common-ota-booking-engine-mistakes">
+          <span class="post-section-num">07</span>
+          <h2 class="post-h2">Common OTA booking engine mistakes</h2>
+          <p>Most booking-engine problems are not exotic. They are the same handful of sequencing and scoping mistakes, repeated across the industry.</p>
+          <p><strong>Building the UI before the integration architecture.</strong> A strong front end cannot compensate for unreliable supplier connectivity, and teams that start with design mockups often discover the hard integration problems only after the interface is already locked in.</p>
+          <p><strong>Connecting suppliers directly to the front end.</strong> This creates tight coupling between the customer experience and whatever a given supplier's API happens to look like today, which makes every future supplier change, addition, or removal harder than it needs to be.</p>
+          <p><strong>Treating search and booking as the same operation.</strong> Search can tolerate caching and approximation. Final booking needs stronger validation, because that is the point where an inaccurate price or a stale availability window turns into a real customer problem.</p>
+          <p><strong>Skipping revalidation.</strong> Travel prices and availability can change in the seconds or minutes between search and booking, and a system that trusts its own cache at checkout will eventually sell something it cannot actually deliver.</p>
+          <p><strong>Ignoring post-booking servicing.</strong> Cancellations, changes, refunds, and disruptions need dedicated workflows of their own; treating them as an afterthought to the booking flow is how a good checkout experience turns into a bad support experience.</p>
+        </section>
+
+        <section class="post-section reveal" id="s08-what-a-modern-ota-booking-engine-should-look-like">
+          <span class="post-section-num">08</span>
+          <h2 class="post-h2">What a modern OTA booking engine should look like</h2>
+          <p>Put together, the components and the failure modes above point toward a fairly specific list of traits. A booking engine built for the next decade, rather than the last one, tends to be:</p>
+          <ul>
+            <li><strong>API-first</strong> — every capability is exposed as an API first, with the UI as one consumer among several.</li>
+            <li><strong>Multi-source</strong> — able to blend GDS, NDC, direct, and aggregator content without treating any one of them as the default.</li>
+            <li><strong>Normalized</strong> — supplier data is converted into one internal model before anything downstream has to reason about it.</li>
+            <li><strong>Cache-aware</strong> — it knows exactly which data is safe to cache and which has to be revalidated every time.</li>
+            <li><strong>Transaction-safe</strong> — payment and booking failures have a defined, tested recovery path rather than a manual cleanup process.</li>
+            <li><strong>Observable</strong> — retries, timeouts, and supplier failures are visible in monitoring, not discovered through customer complaints.</li>
+            <li><strong>AI-ready</strong> — structured enough that conversational and agentic interfaces can query it the same way a human-facing UI does.</li>
+            <li><strong>Operable</strong> — the team running it can diagnose and fix a failure without needing to read the original engineers' minds.</li>
+          </ul>
+        </section>
+
+        <section class="post-section reveal" id="s09-build-vs-buy-an-ota-booking-engine">
+          <span class="post-section-num">09</span>
+          <h2 class="post-h2">Build vs. buy an OTA booking engine</h2>
+          <p>Buying can make sense when speed to market and standard functionality are the priority. Most OTAs do not need to reinvent GDS connectivity or basic payment processing, and a proven vendor product gets that infrastructure in place quickly. Building, or heavily customizing an existing platform, makes more sense when search, pricing, supplier connectivity, booking workflows, or AI capabilities are meant to be genuine differentiators rather than table stakes.</p>
+          <p>For established OTAs sitting on an older platform, replatforming can offer a third path: modernizing the booking infrastructure while preserving the parts of the business, the brand, the supplier relationships, the customer base, that already work. It is worth reading this alongside our take on <a href="/insights/modernization-without-rip-and-replace">OTA platform modernization and replatforming</a>, which goes deeper into how to sequence that kind of change without stopping the business to do it.</p>
+        </section>
+
+        <section class="post-section reveal" id="s10-the-future-of-ota-booking-engines">
+          <span class="post-section-num">10</span>
+          <h2 class="post-h2">The future of OTA booking engines</h2>
+          <p>AI and conversational interfaces are likely to change how travelers search and shop, letting an agent handle comparison and negotiation that used to require a human sifting through search results. But the underlying transaction does not get any easier because the front end got smarter: it still depends on reliable inventory, accurate pricing, careful revalidation, working payment, confirmed booking, and competent post-booking servicing.</p>
+          <p>The next generation of OTA booking engines will increasingly be API-first, observable, and commercially intelligent by default, designed from the start to serve both human travelers and the software agents that are starting to book on their behalf.</p>
+        </section>
+
+        <section class="post-section reveal" id="s11-conclusion">
+          <span class="post-section-num">11</span>
+          <h2 class="post-h2">Conclusion</h2>
+          <p>An OTA booking engine is the transactional core of an online travel agency. It connects fragmented, constantly changing travel supply with traveler demand, and turns search intent into a confirmed booking, again and again, at whatever volume the business needs.</p>
+          <p>A production-grade booking engine brings together search, supplier connectivity, data normalization, caching, pricing, revalidation, booking, payment, confirmation, and post-booking servicing into one coherent system, not eleven separate ones that happen to be deployed next to each other.</p>
+          <p>For an OTA, booking-engine architecture is a business decision as much as an engineering one, because it shows up directly in conversion, inventory, margin, reliability, and scalability. Getting it right is rarely glamorous. It is, however, the difference between a platform that scales and one that has to be rebuilt the next time the business grows.</p>
+        </section>
+
+
+    <section class="post-kicker reveal">
+      <p>Techspian helps OTAs design, build, modernize, and operate booking platforms across supplier connectivity, search, pricing, booking, AI-native experiences, and managed operations. If your booking engine is still held together by whatever integration pattern made sense five years ago, that is where we start.</p>
+      <div class="btn-group">
+        <a href="/contact" class="btn btn--primary">Book a strategy call</a>
+        <a href="/insights" class="btn btn--ghost">More insights</a>
+      </div>
+    </section>
+    </div>
+  </div>
+
+  <section class="section section--soft related-section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Continue reading</span>
+        <h2 class="h-section">Three more pieces from the desk.</h2>
+      </div>
+      <div class="related-grid">
+
+          <a href="/insights/travel-apis-competitive-battleground" class="related-card">
+            <span class="related-pillar">Travel Commerce</span>
+            <h3>Why travel APIs are the new competitive battleground.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+          <a href="/insights/modernization-without-rip-and-replace" class="related-card">
+            <span class="related-pillar">Platform & Cloud</span>
+            <h3>Modernisation without the rip and replace.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+          <a href="/insights/white-label-ota-resurgence" class="related-card">
+            <span class="related-pillar">Travel Commerce</span>
+            <h3>The white-label OTA is back, and it comes with a differentiation tax.</h3>
+            <span class="related-cta">Read piece →</span>
+          </a>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+
+<section class="section cta-band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Talk to us</span>
+      <h2 class="h-section">If any of this rhymes with your roadmap, let's talk.</h2>
+      <p class="lead">A strategy call is a working session, not a pitch. Bring the problem, leave with the shape of an answer.</p>
+      <div class="btn-group">
+        <a href="../../contact" class="btn btn--primary">Book a strategy call</a>
+        <a href="../../approach" class="btn btn--ghost">Explore our approach</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="../../assets/techspian-logo-footer.svg?v=1783675450" alt="Techspian">
+        <p>The travel and hospitality technology firm that advises, builds, and operates the systems that move travel businesses from the boardroom to production.</p>
+        <p class="footer-meta">Incorporated 2020 · Pune, India · ISO 27001</p>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul role="list">
+          <li><a href="../../capabilities">What We Do</a></li>
+          <li><a href="../../industries">Travel Verticals</a></li>
+          <li><a href="../../approach">How We Work</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul role="list">
+          <li><a href="../../work">Our Work</a></li>
+          <li><a href="../../about">About</a></li>
+          <li><a href="../../insights">Insights</a></li>
+          <li><a href="../../contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul role="list">
+          <li><a href="../../contact">Book a strategy call</a></li>
+          <li><a href="https://www.linkedin.com/company/techspian" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:marketing@techspian.com">marketing@techspian.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-marquee" aria-hidden="true">
+    <div class="marquee-track"><span>Travel commerce</span><span class="dot">·</span><span>AI-native</span><span class="dot">·</span><span>In production</span><span class="dot">·</span><span>Worldwide</span><span class="dot">·</span></div>
+  </div>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Techspian. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<script src="../../app.js?v=1783675450"></script>
+</body>
+</html>
