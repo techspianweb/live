@@ -153,9 +153,9 @@
 }
 .post-lead-para:last-child { margin-bottom: 0; }
 
-.post-body { padding-top: 32px; padding-bottom: 64px; }
-.post-section { margin-bottom: 64px; position: relative; }
-.post-section:last-of-type { margin-bottom: 40px; }
+.post-body { padding-top: 32px; padding-bottom: 48px; }
+.post-section { margin-bottom: 36px; position: relative; }
+.post-section:last-of-type { margin-bottom: 24px; }
 .post-section-num {
   display: block;
   font-family: 'JetBrains Mono', monospace;
@@ -259,7 +259,7 @@
 
 /* -------- Infographic figure -------- */
 .post-figure {
-  margin: 48px 0 56px;
+  margin: 32px 0 40px;
   padding: 36px 36px 28px;
   background: linear-gradient(180deg, #FAFAF7 0%, #F5F3ED 100%);
   border: 1px solid #D4D1CA;

@@ -1205,7 +1205,7 @@
   .btn-group .btn{width:100%;justify-content:center;font-size:1rem;padding:14px 20px}
 
   /* Section paddings */
-  section, .section{padding-top:48px !important;padding-bottom:48px !important}
+  .section{padding-top:48px !important;padding-bottom:48px !important}
   .section-marquee{padding:14px 0 !important}
 
   /* Logo row — just the label (logos render in .logo-marquee below) */
