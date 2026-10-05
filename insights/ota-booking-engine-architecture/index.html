@@ -180,7 +180,7 @@
           <p>Underneath that flow sit the components that actually do the work. None of them are optional in a production system, though how much engineering effort each one gets is where booking engines start to differ from each other.</p>
 
           <h3 class="post-h3">Customer Experience Layer</h3>
-          <p>The web, mobile, B2B, white-label, or AI interface where users search, compare, pay, and manage bookings. It is the only layer most travelers ever see, which is exactly why it gets rebuilt long before anyone touches what is underneath it.</p>
+          <p>The web, mobile, B2B, <a href="/insights/white-label-ota-resurgence">white-label</a>, or AI interface where users search, compare, pay, and manage bookings. It is the only layer most travelers ever see, which is exactly why it gets rebuilt long before anyone touches what is underneath it.</p>
 
           <h3 class="post-h3">API Gateway and Orchestration Layer</h3>
           <p>Routes requests between the customer experience and the backend services doing the actual work. It typically handles authentication, routing, rate limiting, logging, and error handling, the plumbing that keeps every other component from having to solve those problems itself.</p>
@@ -189,7 +189,7 @@
           <p>Converts a traveler's search into supplier requests and combines the responses into a single result set. Search speed and supplier-call efficiency directly affect both infrastructure cost and conversion; a slow or overly literal search engine loses bookings before a traveler ever reaches checkout.</p>
 
           <h3 class="post-h3">Supplier Connectivity Layer</h3>
-          <p>Connects the OTA to GDS platforms, NDC connections, direct airline APIs, hotel APIs, aggregators, and other suppliers. This is the layer that absorbs the most operational risk, because every supplier it touches can change its API, its uptime, or its terms with little warning.</p>
+          <p>Connects the OTA to GDS platforms, NDC connections, direct airline APIs, hotel APIs, aggregators, and other suppliers. This is the layer that absorbs the most operational risk, because <a href="/insights/travel-apis-competitive-battleground">every supplier it touches can change its API</a>, its uptime, or its terms with little warning.</p>
 
           <h3 class="post-h3">Data Normalization and Mapping</h3>
           <p>Converts the different formats each supplier returns into one consistent internal model, covering properties, rooms, fares, amenities, policies, currencies, and taxes. Without this layer, every downstream component would need to understand every supplier's data shape individually, which does not scale past a handful of integrations.</p>
@@ -198,19 +198,19 @@
           <p>Stores information that does not always require a real-time supplier call, useful for search results and static content, but risky for anything time-sensitive. Dynamic availability and final prices should always be revalidated before booking rather than trusted from cache.</p>
 
           <h3 class="post-h3">Pricing and Business Rules Engine</h3>
-          <p>Applies markups, commissions, discounts, taxes, currency conversion, promotions, customer-specific pricing, and loyalty rules on top of whatever the supplier returned. This is usually where an OTA's actual commercial strategy lives in code, and where the margin on every booking gets decided.</p>
+          <p>Applies markups, commissions, discounts, taxes, currency conversion, promotions, customer-specific pricing, and loyalty rules on top of whatever the supplier returned. This is usually <a href="/insights/revenue-system-is-the-product">where an OTA's actual commercial strategy lives in code</a>, and where the margin on every booking gets decided.</p>
 
           <h3 class="post-h3">Basket and Itinerary Management</h3>
-          <p>Maintains the selected product, traveler details, price, and session state while the customer completes the booking, holding everything together across what can be a multi-step, multi-minute checkout flow.</p>
+          <p>Maintains the selected product, traveler details, price, and session state while the customer completes the booking, holding everything together across what can be a <a href="/insights/illusion-of-choice-booking-flows">multi-step, multi-minute checkout flow</a>.</p>
 
           <h3 class="post-h3">Booking and Order Management</h3>
-          <p>Creates the reservation, stores supplier references such as PNRs or confirmation numbers, and maintains the OTA's own internal record of the booking, independent of whatever the supplier's system shows.</p>
+          <p>Creates the reservation, stores supplier references such as PNRs or confirmation numbers, and maintains the OTA's <a href="/insights/ownership-of-travel-data">own internal record of the booking</a>, independent of whatever the supplier's system shows.</p>
 
           <h3 class="post-h3">Payment Layer</h3>
           <p>Processes payment, authentication, refunds, and related payment operations. The system needs a defined recovery path for the case where payment succeeds but the supplier booking call fails, or the reverse, because that mismatch is where a lot of customer-facing chaos originates.</p>
 
           <h3 class="post-h3">Post-Booking Servicing</h3>
-          <p>Handles cancellations, changes, refunds, rebooking, vouchers, and customer support after the confirmation email goes out. It is the component most often built last, and the one travelers judge a business by most when something goes wrong.</p>
+          <p>Handles cancellations, changes, refunds, rebooking, vouchers, and customer support after the confirmation email goes out. <a href="/insights/post-booking-servicing-gap">It is the component most often built last</a>, and the one travelers judge a business by most when something goes wrong.</p>
         </section>
 
         <figure class="post-figure reveal">
@@ -358,7 +358,7 @@
           <p>Most booking-engine problems are not exotic. They are the same handful of sequencing and scoping mistakes, repeated across the industry.</p>
           <p><strong>Building the UI before the integration architecture.</strong> A strong front end cannot compensate for unreliable supplier connectivity, and teams that start with design mockups often discover the hard integration problems only after the interface is already locked in.</p>
           <p><strong>Connecting suppliers directly to the front end.</strong> This creates tight coupling between the customer experience and whatever a given supplier's API happens to look like today, which makes every future supplier change, addition, or removal harder than it needs to be.</p>
-          <p><strong>Treating search and booking as the same operation.</strong> Search can tolerate caching and approximation. Final booking needs stronger validation, because that is the point where an inaccurate price or a stale availability window turns into a real customer problem.</p>
+          <p><strong>Treating search and booking as the same operation.</strong> Search can tolerate caching and approximation. <a href="/insights/visa-entry-requirement-tech">Final booking needs stronger validation</a>, because that is the point where an inaccurate price or a stale availability window turns into a real customer problem.</p>
           <p><strong>Skipping revalidation.</strong> Travel prices and availability can change in the seconds or minutes between search and booking, and a system that trusts its own cache at checkout will eventually sell something it cannot actually deliver.</p>
           <p><strong>Ignoring post-booking servicing.</strong> Cancellations, changes, refunds, and disruptions need dedicated workflows of their own; treating them as an afterthought to the booking flow is how a good checkout experience turns into a bad support experience.</p>
         </section>
@@ -374,7 +374,7 @@
             <li><strong>Cache-aware</strong> — it knows exactly which data is safe to cache and which has to be revalidated every time.</li>
             <li><strong>Transaction-safe</strong> — payment and booking failures have a defined, tested recovery path rather than a manual cleanup process.</li>
             <li><strong>Observable</strong> — retries, timeouts, and supplier failures are visible in monitoring, not discovered through customer complaints.</li>
-            <li><strong>AI-ready</strong> — structured enough that conversational and agentic interfaces can query it the same way a human-facing UI does.</li>
+            <li><strong>AI-ready</strong> — structured enough that <a href="/insights/agentic-booking-2026">conversational and agentic interfaces</a> can query it the same way a human-facing UI does.</li>
             <li><strong>Operable</strong> — the team running it can diagnose and fix a failure without needing to read the original engineers' minds.</li>
           </ul>
         </section>
@@ -382,7 +382,7 @@
         <section class="post-section reveal" id="s09-build-vs-buy-an-ota-booking-engine">
           <span class="post-section-num">09</span>
           <h2 class="post-h2">Build vs. buy an OTA booking engine</h2>
-          <p>Buying can make sense when speed to market and standard functionality are the priority. Most OTAs do not need to reinvent GDS connectivity or basic payment processing, and a proven vendor product gets that infrastructure in place quickly. Building, or heavily customizing an existing platform, makes more sense when search, pricing, supplier connectivity, booking workflows, or AI capabilities are meant to be genuine differentiators rather than table stakes.</p>
+          <p>Buying can make sense when speed to market and standard functionality are the priority. Most OTAs do not need to reinvent GDS connectivity or basic payment processing, and <a href="/insights/rfp-broken-for-travel-tech">a proven vendor product</a> gets that infrastructure in place quickly. Building, or heavily customizing an existing platform, makes more sense when search, pricing, supplier connectivity, booking workflows, or AI capabilities are meant to be genuine differentiators rather than table stakes.</p>
           <p>For established OTAs sitting on an older platform, replatforming can offer a third path: modernizing the booking infrastructure while preserving the parts of the business, the brand, the supplier relationships, the customer base, that already work. It is worth reading this alongside our take on <a href="/insights/modernization-without-rip-and-replace">OTA platform modernization and replatforming</a>, which goes deeper into how to sequence that kind of change without stopping the business to do it.</p>
         </section>
 
@@ -390,7 +390,7 @@
           <span class="post-section-num">10</span>
           <h2 class="post-h2">The future of OTA booking engines</h2>
           <p>AI and conversational interfaces are likely to change how travelers search and shop, letting an agent handle comparison and negotiation that used to require a human sifting through search results. But the underlying transaction does not get any easier because the front end got smarter: it still depends on reliable inventory, accurate pricing, careful revalidation, working payment, confirmed booking, and competent post-booking servicing.</p>
-          <p>The next generation of OTA booking engines will increasingly be API-first, observable, and commercially intelligent by default, designed from the start to serve both human travelers and the software agents that are starting to book on their behalf.</p>
+          <p>The next generation of OTA booking engines will increasingly be API-first, observable, and commercially intelligent by default, designed from the start to serve both human travelers and the <a href="/insights/research">software agents that are starting to book on their behalf</a>.</p>
         </section>
 
         <section class="post-section reveal" id="s11-conclusion">
@@ -403,7 +403,7 @@
 
 
     <section class="post-kicker reveal">
-      <p>Techspian helps OTAs design, build, modernize, and operate booking platforms across supplier connectivity, search, pricing, booking, AI-native experiences, and managed operations. If your booking engine is still held together by whatever integration pattern made sense five years ago, that is where we start.</p>
+      <p>Techspian helps OTAs <a href="/capabilities">design, build, modernize, and operate booking platforms</a> across supplier connectivity, search, pricing, booking, AI-native experiences, and managed operations. If your booking engine is still held together by whatever integration pattern made sense five years ago, that is where we start.</p>
       <div class="btn-group">
         <a href="/contact" class="btn btn--primary">Book a strategy call</a>
         <a href="/insights" class="btn btn--ghost">More insights</a>
