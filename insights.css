@@ -397,3 +397,23 @@
 .report-gate-dialog h3 { font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 700; margin: 10px 0 8px; color: #28251D; }
 .report-gate-lead { font-size: 14px; line-height: 1.5; color: #4A4844; margin: 0 0 20px; }
 .report-gate-success p { font-size: 15px; color: #28251D; margin-bottom: 16px; }
+
+/* -------- Continuation of a section after an exhibit (no divider) -------- */
+.post-section--cont::before { display: none; }
+
+/* -------- Data tables in posts -------- */
+.post-table-wrap { overflow-x: auto; margin: 8px 0 24px; -webkit-overflow-scrolling: touch; }
+.post-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; color: #28251D; min-width: 520px; }
+.post-table th, .post-table td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid #E4E1DA; }
+.post-table thead th { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #7A7974; border-bottom: 1px solid #D4D1CA; }
+.post-table tbody th { font-weight: 600; }
+.post-table tbody tr:last-child th, .post-table tbody tr:last-child td { border-bottom: 0; }
+.post-section--cont > p:first-of-type::first-letter { all: unset; }
+
+/* Buttons inside a post keep their own colours (the body link style was overriding them) */
+.post-body a.btn, .post-body a.btn:hover { text-decoration: none; }
+.post-body a.btn--primary, .post-body a.btn--primary:hover { color: #fff; }
+.post-body a.btn--ghost, .post-body a.btn--ghost:hover { color: var(--color-ink); }
+
+/* Opt a paragraph out of the section drop cap (e.g. after a table or list, or a bold lead-in) */
+.post-section > p.no-dropcap::first-letter { all: unset; }
