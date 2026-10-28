@@ -29,6 +29,21 @@
     } catch (e) {}
   });
 
+  /* ---------- Events bar: drop it once the last event has ended ---------- */
+  const eventBar = document.querySelector('.event-bar[data-until]');
+  if (eventBar && new Date() > new Date(eventBar.dataset.until + 'T23:59:59')) eventBar.remove();
+
+  /* ---------- Events page: "Starts in N days" chips ---------- */
+  document.querySelectorAll('[data-starts]').forEach(el => {
+    const now = new Date();
+    const start = new Date(el.dataset.starts + 'T00:00:00');
+    const end = new Date((el.dataset.ends || el.dataset.starts) + 'T23:59:59');
+    const days = Math.ceil((start - now) / 864e5);
+    if (now > end) el.textContent = 'Event ended';
+    else if (now >= start) el.textContent = 'Happening now';
+    else el.textContent = days === 1 ? 'Starts tomorrow' : 'Starts in ' + days + ' days';
+  });
+
   /* ---------- Header: transparent → white on scroll ---------- */
   const header = document.querySelector('.site-header');
   const onScroll = () => {
